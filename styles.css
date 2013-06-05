@@ -9,7 +9,7 @@ body {
 .print a
 {
 	padding:2px 13px 2px 13px;
-	background-color:#F60;
+	background-color:#00a1d2;
 	color:#000;
 	text-decoration:none;
 }
@@ -113,7 +113,7 @@ form input.formbutton {
 	text-decoration: none;
 	text-transform: uppercase;
 	text-shadow:-1px -1px #CE5709;
-	background: #F87B27 url('images/frontpage-link.png') repeat-x scroll top left;
+	background:#00a1d2;
 	border: none;
 	width:115px;
 	height:35px;
@@ -264,12 +264,15 @@ ul.styledlist li {
 
 #nav {
 	margin-top:5px;
-	background:#0A0A0A;
+	background:#00a1d2;
 	height: 50px;
 	width: 1315px;
 	margin-left:-180px;
 	position: relative;
 	z-index: 999;
+	-webkit-box-shadow: 0 10px 6px -6px black;
+	   -moz-box-shadow: 0 10px 6px -6px black;
+	        box-shadow: 0 10px 6px -6px black;
 }
 
 #nav ul {
@@ -290,7 +293,7 @@ ul.styledlist li {
 
 #nav ul li a {
 	display: block;
-	color: #999;
+	color: #000;
 	display: block;
 	font-size: 14px;
 	font-weight: bold;
@@ -303,13 +306,14 @@ ul.styledlist li {
 }
 
 #nav ul li a.has_submenu {
-	background: transparent url('images/submenu-item.gif') no-repeat scroll right center;
+	background:  transparent url('images/submenu-item.gif') no-repeat scroll right center;
 	padding-right: 30px;
 	
 }
 
 #nav ul li a.has_submenu:hover, #nav ul li.sfHover a.has_submenu {
-	background-image: url('images/submenu-item-hover.gif');
+	background-image:#FFF  url('images/submenu-item-hover.gif');
+	color:#000;
 }
 
 
@@ -325,8 +329,8 @@ ul.styledlist li {
 }
 
 #nav ul li.selected a, #nav ul li.selected a:hover, #nav ul li.selected li.selected a  {
-	color: #fff;
-	border-top: 3px solid #F87B27;
+	color: #000;
+	border-top: 3px solid #FFF;
 }
 
 #nav ul ul li.selected a, #nav ul ul li.selected a:hover {
@@ -334,17 +338,15 @@ ul.styledlist li {
 }
 
 #nav ul li a:hover, #nav ul li.sfHover a, #nav ul ul a {
-	color: #fff;
-	background-color:#F87B27;
-	border-top: 3px solid #F87B27;
+	color: #000;
+	background-color:#FFF;
+	border-top: 3px solid #FFF;
 }
 
 #nav ul li li a:hover, #nav ul li.sfHover li a:hover {
 	border-top: 3px solid #fff;
-	background-color: #FBA770;
-}
-
-/*** ESSENTIAL STYLES ***/
+	background-color:#06C;
+}/*** ESSENTIAL STYLES ***/
 .sf-menu, .sf-menu * {
 	margin:			0;
 	padding:		0;
@@ -566,12 +568,11 @@ div#footer-links p {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight:500;
 	letter-spacing:5px;
-	background-color:#F87B27;
+	background-color:#00a1d2;
 	width:95%;
 	height:30px;
 	margin-top:2px;
 	text-shadow:-1px -1px #CE5709;
-	background: #F87B27 url('images/frontpage-link.png') repeat-x scroll top left;	
 	padding:3px 0px 0px 0px;
 }
 .quotationI
@@ -581,13 +582,12 @@ div#footer-links p {
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight:500;
 	letter-spacing:5px;
-	background-color:#F87B27;
+	background-color:#00a1d2;
 	width:80%;
 	height:30px;
 	margin-left:100px;
 	margin-top:2px;
 	text-shadow:-1px -1px #CE5709;
-	background: #F87B27 url('images/frontpage-link.png') repeat-x scroll top left;	
 	padding:3px 0px 0px 0px;
 }
 .l_form
