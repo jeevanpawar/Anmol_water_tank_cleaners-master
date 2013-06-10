@@ -1,19 +1,26 @@
 <?php
 
 	include("include/database.php");
-	
+	$p=$_REQUEST['p_id'];
+	$p_qry="select * from invoice where c_id=".$p;
+	$p_res=mysql_query($p_qry);
+	$p_row=mysql_fetch_array($p_res);
+		
 	if(isset($_REQUEST['e_add']))
 	{
-		$e_t1=$_POST['e_name'];
-		$e_t2=$_POST['e_address'];
-		$e_t3=$_POST['e_contact'];
-		$e_t4=$_POST['e_desig'];
+		$p_t1=$_POST['t1'];
+		$p_t2=$_POST['t2'];
+		$p_t3=$_POST['t3'];
+		$p_t4=$_POST['t4'];
+		$p_t5=$_POST['t5'];
+		$p_t6=$_POST['t6'];
+			
 		
-		$e_qry="insert into emp(e_name,e_add,e_contact,e_desig) values('".$e_t1."','".$e_t2."','".$e_t3."','".$e_t4."')";
-		$e_res=mysql_query($e_qry);
-		if($e_res)
+		$pa_qry="insert into partial_payment(i_id,c_name,p_mode,c_no,p_date,p_amt) values('".$p_t1."','".$p_t2."','".$p_t3."','".$p_t4."','".$p_t5."','".$p_t6."')";
+		$pa_res=mysql_query($pa_qry);
+		if($pa_res)
 		{
-			header("location:employee.php");
+			header("location:payment.php");
 		}
 		else
 		{
@@ -22,8 +29,10 @@
 	}
 	if(isset($_REQUEST['e_can']))
 	{
-		header("location:employee.php");
+		header("location:payment.php");
 	}
+	
+	$d=date('d-m-Y');
 ?>
 <html>
 <head>
@@ -63,44 +72,44 @@ function validateMyForm ( ) {
     <div id="nav">
     	<ul class="sf-menu dropdown">
         	
-        	<li><a href="home.php">Home</a></li>
+        	<li><a href="index.php">Home</a></li>
             <li ><a class="has_submenu" href="site.php">Sites</a>
-            		<ul>
+            <ul>
                 	<li><a href="siteassgn.php">Assign To</a></li>
                 </ul>
             </li>
-            <li ><a href="amcreport.php">AMC</a>
+            <li ><a class="has_submenu" href="site.php">AMC</a>
+            	<ul>
+                    <li><a href="amcreport.php">Amc Details</a></li>
+                </ul>
+
             </li>
-            
-            
             <li><a class="has_submenu" href="clients.php">Clients</a>
             	<ul>
                 	<li><a href="addclients.php">Add Clients</a></li>
-                </ul>
+                    
+                    </ul>
             
             </li>
             <li class="selected"><a class="has_submenu" href="employee.php">Employees</a>
             		<ul>
                 	<li><a href="addepm.php">Add Employee</a></li>
+                    <li><a href="employee.php">Employee Details</a></li>
                     </ul>
             
             </li>
-            <li><a href="payment.php">Payments</a>
-            		
-            </li>
-            <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
+           <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
             		<ul>
-                    <li><a href="addinvoice.php">Invoice Add</a></li>
-                
+                	<li><a href="invoice.php">Invoice</a></li>
                     </ul>
             </li>
             <li><a class="has_submenu" href="quotation.php">Quotation</a>
             		<ul>
-                    <li><a href="addquo.php">Quotation Add</a></li>
-                	
+                	<li><a href="quotationI.php">Quotation I</a></li>
+                    <li><a href="quotationII.php">Quotation II</a></li>
                     </ul>
             </li>
-            <li><a class="has_submenu" href="term.php">Terms & Conditions</a>
+            <li><a class="has_submenu"  href="term.php">Terms & Conditions</a>
             <ul>
               	<li><a href="addterm.php">Add Terms</a></li>
             </ul>
@@ -112,25 +121,38 @@ function validateMyForm ( ) {
     <div id="sub-header">
     <div class="quo">
     	<br />
-		<div class="quotation"><center>Add New Employee</center></div>
+		<div class="quotation"><center>Payments Details</center></div>
         <div>
         <form name="form1" action="" method="post">
         <table class="addemp_tab">
         <tr>
-        <td class="l_form">Emp Name:</td>
-        <td><input id="ename" type="text" class="q_in" name="e_name"></td>
+        <td class="l_form">Invoice No:</td>
+        <td><input id="des" type="text" class="q_in" name="t1" value="<?php echo $p_row[0]; ?>"></td>
         </tr>
         <tr>
-        <td class="l_form">Address:</td>
-        <td><textarea id="add" class="q_add" name="e_address"></textarea></td>
+        <td class="l_form">Clients Name:</td>
+        <td><input id="ename" type="text" class="q_in" name="t2" value="<?php echo $p_row[3]; ?>"></td>
         </tr>
         <tr>
-        <td class="l_form">Contact Details:</td>
-        <td><input id="contact" type="text" class="q_in" name="e_contact"></td>
+        <td class="l_form">Payment Mode:</td>
+        <td>
+        <select name="t3">
+        <option>By Check</option>
+        <option>By Cash</option>
+        </select>
+        </td>
         </tr>
         <tr>
-        <td class="l_form">Designation:</td>
-        <td><input id="des" type="text" class="q_in" name="e_desig"></td>
+        <td class="l_form">Check No:</td>
+        <td><input id="contact" type="text" class="q_in" name="t4"></td>
+        </tr>
+        <tr>
+        <td class="l_form">Date:</td>
+        <td><input id="des" type="text" class="q_in" name="t5" value="<?php echo $d; ?>"></td>
+        </tr>
+        <tr>
+        <td class="l_form">Amount:</td>
+        <td><input id="des" type="text" class="q_in" name="t6"></td>
         </tr>
         
         </div>

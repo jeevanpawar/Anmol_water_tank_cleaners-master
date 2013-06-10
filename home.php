@@ -23,15 +23,11 @@ $res=mysql_query($qry);
         	
         	<li class="selected"><a href="home.php">Home</a></li>
             <li ><a class="has_submenu" href="site.php">Sites</a>
-            <ul>
+            		<ul>
                 	<li><a href="siteassgn.php">Assign To</a></li>
                 </ul>
             </li>
-            <li ><a class="has_submenu" href="amcreport.php">AMC</a>
-            	<ul>
-                    <li><a href="amcreport.php">Amc Details</a></li>
-                </ul>
-
+            <li ><a href="amcreport.php">AMC</a>
             </li>
             
             
@@ -44,21 +40,23 @@ $res=mysql_query($qry);
             <li><a class="has_submenu" href="employee.php">Employees</a>
             		<ul>
                 	<li><a href="addepm.php">Add Employee</a></li>
-                    <li><a href="employee.php">Employee Details</a></li>
+                    
                     </ul>
             
+            </li>
+            <li><a href="payment.php">Payments</a>
+            		
             </li>
             <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
             		<ul>
                     <li><a href="addinvoice.php">Invoice Add</a></li>
-                	<li><a href="invoicedetails.php">Invoice Print</a></li>
-                    
+                
                     </ul>
             </li>
             <li><a class="has_submenu" href="quotation.php">Quotation</a>
             		<ul>
                     <li><a href="addquo.php">Quotation Add</a></li>
-                	<li><a href="invoicedetails.php">Quotation Print</a></li>
+                	
                     </ul>
             </li>
             <li><a class="has_submenu" href="term.php">Terms & Conditions</a>

@@ -15,7 +15,8 @@ $c_emp_res=mysql_query($c_emp);
 <?php
 
 if(isset($_REQUEST['submit']))
-{
+{	
+	$c=$c_row[0];
 	$q_date=$_POST['q_date'];
 	$q_name=$_POST['q_name'];
 	$q_address=$_POST['q_address'];
@@ -64,7 +65,7 @@ if(isset($_REQUEST['submit']))
 	$q_a6=$_POST['a6'];
 	$q_a7=$_POST['a7'];
 	$q_total=$_POST['a8'];
-	$quo="insert into invoice(q_date,q_name,q_address,q_attn,q_mo,d1,d2,d3,d4,d5,d6,d7,c1,c2,c3,c4,c5,c6,c7,q1,q2,q3,q4,q5,q6,q7,r1,r2,r3,r4,r5,r6,r7,s1,s2,s3,s4,s5,s6,s7,a1,a2,a3,a4,a5,a6,a7,total) values('".$q_date."','".$q_name."','".$q_address."','".$q_attn."','".$q_mo."','".$q_d1."','".$q_d2."','".$q_d3."','".$q_d4."','".$q_d5."','".$q_d6."','".$q_d7."','".$q_c1."','".$q_c2."','".$q_c3."','".$q_c4."','".$q_c5."','".$q_c6."','".$q_c7."','".$q_q1."','".$q_q2."','".$q_q3."','".$q_q4."','".$q_q5."','".$q_q6."','".$q_q7."','".$q_r1."','".$q_r2."','".$q_r3."','".$q_r4."','".$q_r5."','".$q_r6."','".$q_r7."','".$q_s1."','".$q_s2."','".$q_s3."','".$q_s4."','".$q_s5."','".$q_s6."','".$q_s7."','".$q_a1."','".$q_a2."','".$q_a3."','".$q_a4."','".$q_a5."','".$q_a6."','".$q_a7."','".$q_total."')";
+	$quo="insert into invoice(q_date,c_id,q_name,q_address,q_attn,q_mo,d1,d2,d3,d4,d5,d6,d7,c1,c2,c3,c4,c5,c6,c7,q1,q2,q3,q4,q5,q6,q7,r1,r2,r3,r4,r5,r6,r7,s1,s2,s3,s4,s5,s6,s7,a1,a2,a3,a4,a5,a6,a7,total) values('".$q_date."','".$c."','".$q_name."','".$q_address."','".$q_attn."','".$q_mo."','".$q_d1."','".$q_d2."','".$q_d3."','".$q_d4."','".$q_d5."','".$q_d6."','".$q_d7."','".$q_c1."','".$q_c2."','".$q_c3."','".$q_c4."','".$q_c5."','".$q_c6."','".$q_c7."','".$q_q1."','".$q_q2."','".$q_q3."','".$q_q4."','".$q_q5."','".$q_q6."','".$q_q7."','".$q_r1."','".$q_r2."','".$q_r3."','".$q_r4."','".$q_r5."','".$q_r6."','".$q_r7."','".$q_s1."','".$q_s2."','".$q_s3."','".$q_s4."','".$q_s5."','".$q_s6."','".$q_s7."','".$q_a1."','".$q_a2."','".$q_a3."','".$q_a4."','".$q_a5."','".$q_a6."','".$q_a7."','".$q_total."')";
 	
 	
 	$quo_res=mysql_query($quo);

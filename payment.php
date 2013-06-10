@@ -1,7 +1,7 @@
 <?php
 include("include/database.php");
 $per_page = 20; 
-$sql = "select * from invoice";
+$sql = "select * from clients";
 $rsd = mysql_query($sql);
 $count = mysql_num_rows($rsd);
 $pages = ceil($count/$per_page)
@@ -10,11 +10,10 @@ $pages = ceil($count/$per_page)
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-<script type="text/javascript" src="js/jquery.min.js"></script>
 
+<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -38,7 +37,7 @@ $pages = ceil($count/$per_page)
 	
 	Display_Load();
 	
-	$("#content").load("invoicepagination.php?page=1", Hide_Load());
+	$("#content").load("paymentpagination.php?page=1", Hide_Load());
 
 
 
@@ -58,7 +57,7 @@ $pages = ceil($count/$per_page)
 		//Loading Data
 		var pageNum = this.id;
 		
-		$("#content").load("invoicepagination.php?page=" + pageNum, Hide_Load());
+		$("#content").load("paymentpagination.php?page=" + pageNum, Hide_Load());
 	});
 	
 	
@@ -121,7 +120,7 @@ cursor: pointer;
     <div id="nav">
     	<ul class="sf-menu dropdown">
         	
-        	<li ><a href="home.php">Home</a></li>
+        	<li><a href="home.php">Home</a></li>
             <li ><a class="has_submenu" href="site.php">Sites</a>
             		<ul>
                 	<li><a href="siteassgn.php">Assign To</a></li>
@@ -137,20 +136,19 @@ cursor: pointer;
                 </ul>
             
             </li>
-            <li><a class="has_submenu" href="employee.php">Employees</a>
+            <li ><a class="has_submenu" href="employee.php">Employees</a>
             		<ul>
                 	<li><a href="addepm.php">Add Employee</a></li>
-                    
                     </ul>
             
             </li>
-            <li><a href="payment.php">Payments</a>
-            		
-            </li>
-            <li class="selected"><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
+            <li class="selected"><a href="payment.php">Payments</a>
+           		</li>
+            <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
             		<ul>
                     <li><a href="addinvoice.php">Invoice Add</a></li>
-                                    </ul>
+                	
+                    </ul>
             </li>
             <li><a class="has_submenu" href="quotation.php">Quotation</a>
             		<ul>
@@ -171,9 +169,7 @@ cursor: pointer;
     			
                 <div class="quo">
                 <br />
-                <div class="quotation"><center>Invoice Details</center></div>
-                
-                <div>
+                <div class="quotation"><center>Clients Payments Details</center></div>
                 
                 <div id="loading" ></div>
 		<div id="content" ></div>

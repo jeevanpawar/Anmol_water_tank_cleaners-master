@@ -49,8 +49,8 @@ $rsd = mysql_query($sql);
 			echo"<td  width='250'>";
 			echo $row[7];
 			echo"</td>";
-			echo "<td width='120'>";
-			echo "<a href='?id_d=$row[0]' onclick='return confirmSubmit()'>Delete</a>/<a href='siteupdate.php?id_u=$row[0]'>Update</a>";
+			echo "<td width='120' class='print'>";
+			echo "<a href='?id_d=$row[0]' onclick='return confirmSubmit()'>Delete</a>&nbsp;<a href='siteupdate.php?id_u=$row[0]'>Update</a>";
 			echo "</td>";
 			echo"</tr>";
 		}
