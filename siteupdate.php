@@ -30,23 +30,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<link rel="stylesheet" href="js/jquery-ui.css" />
-  <script src="js/jquery-1.9.1.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      showOn: "button",
-      buttonImage: "images/calendar.gif",
-      buttonImageOnly: true
-    });
-  });
-  </script>
 
 
 </head>

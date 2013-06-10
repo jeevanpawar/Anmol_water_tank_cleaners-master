@@ -1,7 +1,12 @@
 <?php
+error_reporting(0);
 include("include/database.php");
-$c_query="select * from clients";
+
+$in=$_REQUEST['c_id1'];
+
+$c_query="select * from clients where c_id=".$in;
 $c_res=mysql_query($c_query);
+$c_row=mysql_fetch_array($c_res);
 
 $c_emp="select * from emp";
 $c_emp_res=mysql_query($c_emp);
@@ -84,15 +89,21 @@ if(isset($_REQUEST['cancel']))
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
+<script type="text/javascript" language="javascript">
+function validateMyForm ( ) { 
+    var isValid = true;
+    if ( document.form5.invoice.value == "0" || document.form5.invoice.value == "0.00" ) 
+	{ 
+	    alert ( "Amount Is zero" ); 
+	    isValid = false;
+    }
+    return isValid;
+}
+</script>
 
-<script type="text/javascript" src="js/custom.js"></script>
 <script type="text/javascript">
 
 function calculate()
@@ -149,8 +160,10 @@ function calculate()
 	
 	var total = a1 + a2 + a3 + a4 + a5 + a6 + a7;
 	
-	document.form5.a8.value = total.toFixed(2);
 	
+
+	result=total.toFixed(2);
+	$("#invoice").val(result);
 	
 }
 </script>
@@ -169,31 +182,22 @@ function calculate()
                 <form name="form5" action="" method="post">
                 <br />
                 
-                <div class="quotationI"><center>AMC QUOTATION</center></div>
+                <div class="quotationI"><center>AMC INVOICE</center></div>
                 <br />
                 <table class="q_info">
                 <tr><td class="l_form">Date:</td><td><input name="q_date" class="q_in" type="text" value="<?php  echo date("d-m-Y"); ?>"/></td></tr>
                 <tr><td class="l_form">Client Name:</td>
                 <td>
-                <select name="q_name">
-				<?php
-				while($c_row=mysql_fetch_array($c_res))
-				{
-					echo "<option>";
-					echo $c_row[3];
-					echo "</option>";
-				}
-				?>
-                </select>
-                </td>
+                <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[2].' '.$c_row[3]; ?>">
+				</td>
                 </tr>
-                <tr><td class="l_form" valign="top">Address:</td><td><textarea class="q_add" name="q_address"></textarea></td></tr>
+                <tr><td class="l_form">Address:</td><td><textarea class="q_add" name="q_address"><?php echo $c_row[4]; ?></textarea></td></tr>
                 </table>
                 <table class="q_info2">
                 <tr><td class="l_form">&nbsp;</td><td>&nbsp;</td></tr>
                 <tr><td class="l_form">Kind Attn:</td>
                 <td>
-                <select name="q_attn">
+                <select class="q_add_i" name="q_attn">
 				<?php
 				while($c_row_emp=mysql_fetch_array($c_emp_res))
 				{
@@ -205,7 +209,7 @@ function calculate()
                 </select>
                 </td>
                 </tr>
-                <tr><td class="l_form">Mo No:</td><td><input name="q_mo" class="q_in" type="text" /></td>
+                <tr><td class="l_form">Mo No:</td><td><input name="q_mo" class="q_in" type="text" value="<?php echo $c_row[8]; ?>"/></td>
                 </table>
                 <br />
                 <table class="des">
@@ -273,13 +277,13 @@ function calculate()
                 <td><input type="text" class="des_amt" name="a7" value="0" /></td>
                 </tr>
                 <tr class="data"><td></td><td></td><td></td><td></td><td>&nbsp;</td>
-                <td><input type="text" class="des_amt" name="a8" value="0" /></td>
+                <td><input type="text" class="des_amt" name="a8" id="invoice" value="0" readonly=""/></td>
                 </tr>
                 </table>
                 
                 <div class="q_button">
                 <input type="button" name="send" class="formbutton" value=" Calculate " onClick="calculate()" />
-                <input name="submit" class="formbutton" value=" Submit " type="submit" />
+                <input name="submit" class="formbutton" value=" Submit " type="submit" onClick="javascript:return validateMyForm();" />
                 <input name="cancel" class="formbutton" value="Cancel" type="submit" />
                 </div>
                 

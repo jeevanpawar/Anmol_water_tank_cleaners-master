@@ -13,15 +13,8 @@ $pages = ceil($count/$per_page)
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-			
-            
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/
-libs/jquery/1.3.0/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -103,9 +96,10 @@ margin-top:0px;
 list-style: none; 
 float: left; 
 margin-right: 16px; 
-padding:5px; 
+padding:5px;3 
 color:#FFF;
-background-color:#F30;
+margin-left:-10px;
+background-color:#00a1d2;
 
 }
 #pagination li:hover
@@ -181,16 +175,7 @@ cursor: pointer;
                 <div class="quotation"><center>Invoice Details</center></div>
                 
                 <div>
-                <table class="emp_tab">
-                <tr class="emp_header">
-                <td width="100">In. No</td>
-                <td width="250">Client Name</td>
-                <td width="160">Date</td>
-                <td>Site Address</td>
-                <td>AMC</td>
-                <td width="70">Amount</td>
-                </tr>
-                </table>
+                
                 <div id="loading" ></div>
 		<div id="content" ></div>
         <table width="800px">

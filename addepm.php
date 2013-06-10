@@ -27,13 +27,33 @@
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
+
+<script type="text/javascript" language="javascript">
+function validateMyForm ( ) { 
+    var isValid = true;
+    if ( document.form1.ename.value == "" ) 
+	{ 
+	    alert ( "Please enter Employee Name" ); 
+	    isValid = false;
+    }
+	    else if ( document.form1.add.value == "") { 
+            alert ( "please enter Address" ); 
+            isValid = false;
+		}
+		 else if ( document.form1.contact.value == "" ) { 
+            alert ( "Please enter Contact Number" ); 
+            isValid = false;
+    } 
+	
+		 else if ( document.form1.des.value == "" ) { 
+            alert ( "Please enter Designation" ); 
+            isValid = false;
+    } 
+    return isValid;
+}
+</script>
 
 </head>
 
@@ -94,29 +114,29 @@
     	<br />
 		<div class="quotation"><center>Add New Employee</center></div>
         <div>
-        <form action="" method="post">
+        <form name="form1" action="" method="post">
         <table class="addemp_tab">
         <tr>
         <td class="l_form">Emp Name:</td>
-        <td><input type="text" class="q_in" name="e_name"></td>
+        <td><input id="ename" type="text" class="q_in" name="e_name"></td>
         </tr>
         <tr>
-        <td valign="top" class="l_form">Address:</td>
-        <td><textarea class="q_add" name="e_address"></textarea></td>
+        <td class="l_form">Address:</td>
+        <td><textarea id="add" class="q_add" name="e_address"></textarea></td>
         </tr>
         <tr>
         <td class="l_form">Contact Details:</td>
-        <td><input type="text" class="q_in" name="e_contact"></td>
+        <td><input id="contact" type="text" class="q_in" name="e_contact"></td>
         </tr>
         <tr>
         <td class="l_form">Designation:</td>
-        <td><input type="text" class="q_in" name="e_desig"></td>
+        <td><input id="des" type="text" class="q_in" name="e_desig"></td>
         </tr>
         
         </div>
         </table>
         <div class="addemp_button">
-         <input name="e_add" class="formbutton" value=" Add " type="submit" />
+         <input name="e_add" class="formbutton" value=" Add " type="submit" onClick="javascript:return validateMyForm();" />
          <input name="e_can" class="formbutton" value="Cancel" type="submit" />
         </div>
         

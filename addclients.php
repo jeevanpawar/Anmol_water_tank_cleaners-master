@@ -17,11 +17,11 @@ include("include/database.php");
 	$c_res=mysql_query($c_qry);
 	if($c_res)
 	{
-		header("location:checklist.php");
+		header("location:clients.php");
 	}
 	else
 	{
-		echo "error";
+		header("location:addclients.php");
 	}
 	}
 	if(isset($_REQUEST['can']))
@@ -36,23 +36,52 @@ include("include/database.php");
 <link rel="stylesheet" href="styles.css" type="text/css" />
 			
             
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<link rel="stylesheet" href="js/jquery-ui.css" />
-  <script src="js/jquery-1.9.1.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      showOn: "button",
-      buttonImage: "images/calendar.gif",
-      buttonImageOnly: true
-    });
-  });
-  </script>
+
+<script type="text/javascript" language="javascript">
+function validateMyForm ( ) { 
+    var isValid = true;
+    if ( document.form1.fname.value == "" ) 
+	{ 
+	    alert ( "Please enter First Name" ); 
+	    isValid = false; 
+    }
+	    else if ( document.form1.lname.value == "") { 
+            alert ( "please enter Last Name" ); 
+            isValid = false;
+		}
+		 else if ( document.form1.address.value == "" ) { 
+            alert ( "Please enter Address" ); 
+            isValid = false;
+    } 
+	
+		 else if ( document.form1.city.value == "" ) { 
+            alert ( "Please enter City" ); 
+            isValid = false;
+    } 
+	
+		 else if ( document.form1.pin.value == "" ) { 
+            alert ( "Please enter Pincode" ); 
+            isValid = false;
+    } 
+	
+		 else if ( document.form1.email.value == "" ) { 
+            alert ( "Please enter Email Address" ); 
+            isValid = false;
+    } 
+	
+		 else if ( document.form1.ph.value == "" ) { 
+            alert ( "Please enter Phone Number" ); 
+            isValid = false;
+    } 
+	
+		 else if ( document.form1.mo.value == "" ) { 
+            alert ( "Please enter Mobile Number" ); 
+            isValid = false;
+    } 
+    return isValid;
+}
+</script>
+
 </head>
 
 <body>
@@ -112,18 +141,18 @@ include("include/database.php");
     	<br />
 		<div class="quotation"><center>Add New Clients</center></div>
         <div>
-        <form action="" method="post">
+        <form name="form1" action="" method="post">
         <table class="q_clients">
-                <tr><td class="l_form">First Name:</td><td><input class="q_in" type="text" name="c_fname" /></td></tr>
-                <tr><td class="l_form">Last Name:</td><td><input class="q_in" type="text" name="c_lname"/></td></tr>
-                <tr><td class="l_form" valign="top">Address:</td><td><textarea class="q_add" name="c_address"></textarea></td></tr>
-                <tr><td class="l_form">City:</td><td><input class="q_in" type="text" name="c_city"/></td></tr>
-				<tr><td class="l_form">Pin Code:</td><td><input class="q_in" type="text" name="c_pin"/></td></tr>
-                <tr><td class="l_form">Email Id:</td><td><input class="q_in" type="text" name="c_email"/></td></tr>
+                <tr><td class="l_form">First Name:</td><td><input id="fname" class="q_in" type="text" name="c_fname" /></td></tr>
+                <tr><td class="l_form">Last Name:</td><td><input id="lname" class="q_in" type="text" name="c_lname"/></td></tr>
+                <tr><td class="l_form">Address:</td><td><textarea id="address" class="q_add" name="c_address"></textarea></td></tr>
+                <tr><td class="l_form">City:</td><td><input id="city" class="q_in" type="text" name="c_city"/></td></tr>
+				<tr><td class="l_form">Pin Code:</td><td><input id="pin" class="q_in" type="text" name="c_pin"/></td></tr>
+                <tr><td class="l_form">Email Id:</td><td><input id="email" class="q_in" type="text" name="c_email"/></td></tr>
                 </table>
                 <table class="q_clients2">
-                <tr><td class="l_form">Phone No:</td><td><input class="q_in" type="text" name="c_ph"/></td></tr>
-                <tr><td class="l_form">Mobile No:</td><td><input class="q_in" type="text" name="c_mo"/></td></tr>
+                <tr><td class="l_form">Phone No:</td><td><input id="ph" class="q_in" type="text" name="c_ph"/></td></tr>
+                <tr><td class="l_form">Mobile No:</td><td><input id="mo" class="q_in" type="text" name="c_mo"/></td></tr>
                 
                 <tr><td class="l_form">Date:</td><td><input class="q_in" type="text" name="c_state" value="<?php  echo date("d-m-Y"); ?>"/></td></tr>
                 
@@ -143,7 +172,7 @@ include("include/database.php");
                 
                 </table>
         <div class="addclients_b">
-         <input name="c_add" class="formbutton" value=" Add " type="submit" />
+         <input name="c_add" class="formbutton" value=" Add " type="submit" onClick="javascript:return validateMyForm();" />
          <input name="can" class="formbutton" value="Cancel" type="submit" />
         </div>
         

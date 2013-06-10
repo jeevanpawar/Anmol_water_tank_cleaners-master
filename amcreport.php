@@ -11,11 +11,6 @@
 
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-           
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
 
 </head>
 
@@ -24,7 +19,7 @@
 	    <div id="nav">
     	<ul class="sf-menu dropdown">
         	
-        	<li><a href="index.php">Home</a></li>
+        	<li><a href="home.php">Home</a></li>
             <li><a class="has_submenu" href="site.php">Sites</a>
             <ul>
                 	<li><a href="siteassgn.php">Assign To</a></li>
@@ -53,7 +48,8 @@
             </li>
             <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
             		<ul>
-                	<li><a href="invoice.php">Invoice</a></li>
+                    	<li><a href="addinvoice.php">Invoice Add</a></li>
+                		<li><a href="invoicedetails.php">Invoice Print</a></li>
                     </ul>
             </li>
             <li><a class="has_submenu" href="quotation.php">Quotation</a>
@@ -81,7 +77,7 @@
         <td width="50">Start Date.</td>
         <td width="250">Client Name</td>
         </tr>
-        <table class="emp_tab">
+        
          
         <?php
 		while($c_row=mysql_fetch_array($c_res_f))
@@ -96,7 +92,7 @@
 		echo "</tr>";
 		}
 		?>
-        </table>
+      
         </table>
         </div>
     </div>

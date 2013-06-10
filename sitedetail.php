@@ -14,14 +14,8 @@ $pages = ceil($count/$per_page)
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
 			
-            
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/
-libs/jquery/1.3.0/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function(){

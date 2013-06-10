@@ -37,7 +37,7 @@ $pages = ceil($count/$per_page)
 	
 	Display_Load();
 	
-	$("#content").load("clientspagination.php?page=1", Hide_Load());
+	$("#content").load("addinvoicepagination.php?page=1", Hide_Load());
 
 
 
@@ -57,7 +57,7 @@ $pages = ceil($count/$per_page)
 		//Loading Data
 		var pageNum = this.id;
 		
-		$("#content").load("clientspagination.php?page=" + pageNum, Hide_Load());
+		$("#content").load("addinvoicepagination.php?page=" + pageNum, Hide_Load());
 	});
 	
 	
@@ -171,7 +171,7 @@ cursor: pointer;
     			
                 <div class="quo">
                 <br />
-                <div class="quotation"><center>Clients Details</center></div>
+                <div class="quotation"><center>Invoice Detail</center></div>
                 
                 <div id="loading" ></div>
 		<div id="content" ></div>

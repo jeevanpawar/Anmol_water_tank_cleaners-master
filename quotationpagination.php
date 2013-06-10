@@ -13,12 +13,19 @@ $page=$_GET['page'];
 
 //get table contents
 $start = ($page-1)*$per_page;
-$sql = "select * from quotation order by q_id limit $start,$per_page";
+$sql = "select * from quotation order by q_id desc limit $start,$per_page";
 $rsd = mysql_query($sql);
 ?>
-
-
 	<table class="emp_tab">
+                <tr class="emp_header">
+                <td width="80">Quo No</td>
+                <td width="250">Client Name</td>
+                <td width="160">Date</td>
+                <td width="500">Site Address</td>
+                <td width="70">Amount</td>
+                <td width="70">Print</td>
+                </tr>
+                
         <?php
 		
 		while($row=mysql_fetch_array($rsd))

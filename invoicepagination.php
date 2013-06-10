@@ -13,18 +13,25 @@ $page=$_GET['page'];
 
 //get table contents
 $start = ($page-1)*$per_page;
-$sql = "select * from invoice order by i_id limit $start,$per_page";
+$sql = "select * from invoice order by i_id desc limit $start,$per_page";
 $rsd = mysql_query($sql);
 ?>
 
-
-	<table class="emp_tab">
+				<table class="emp_tab">
+                <tr class="emp_header">
+                <td width="80">In. No</td>
+                <td width="250">Client Name</td>
+                <td width="160">Date</td>
+                <td>Site Address</td>
+                <td width="70">Amount</td>
+                </tr>
+                
         <?php
 		
 		while($row=mysql_fetch_array($rsd))
 		{		
         	echo "<tr class='emp_header'>";
-                echo "<td width='80'>";
+                echo "<td width='70'>";
                 echo $row[0];
                 echo "</td>";
                 echo "<td width='250'>";
@@ -36,9 +43,6 @@ $rsd = mysql_query($sql);
                 echo "<td width='500'>";
                 echo $row[3];
                 echo "</td>";
-				echo "<td width='70'>";
-                echo $row[48];
-                echo "</td>";
 				echo "<td width='70' class='print'>";
                 echo "<a href='report.php?id=$row[0]'>Print</a>";
                 echo "</td>";
@@ -46,4 +50,6 @@ $rsd = mysql_query($sql);
                 
 		}
 		?>
+        
+        
         </table>

@@ -21,7 +21,7 @@ if(isset($_REQUEST['id_d']))
 
 error_reporting(0);
 
-$per_page = 2; 
+$per_page = 20; 
 
 //getting number of rows and calculating no of pages
 $sql = "select * from site";
@@ -36,14 +36,8 @@ $pages = ceil($count/$per_page)
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
 			
-            
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
 
-<script type="text/javascript" src="js/custom.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/
-libs/jquery/1.3.0/jquery.min.js"></script>
 	<script type="text/javascript">
 	
 	$(document).ready(function(){
@@ -52,7 +46,6 @@ libs/jquery/1.3.0/jquery.min.js"></script>
 	function Display_Load()
 	{
 	    $("#loading").fadeIn(900,0);
-		$("#loading").html("<img src='bigLoader.gif' />");
 	}
 	//Hide Loading Image
 	function Hide_Load()
@@ -96,7 +89,6 @@ libs/jquery/1.3.0/jquery.min.js"></script>
 	</script>
 	
 <style>
-
 a
 {
 text-decoration:none;
@@ -119,22 +111,25 @@ position: absolute;
 #pagination
 {
 text-align:center;
-margin-left:120px;
-margin-top:200px;
-position:fixed;
+color:#6F0;
+margin-left:10px;
+margin-top:0px;
 }
-li page{	
+#pagination li {	
 list-style: none; 
 float: left; 
 margin-right: 16px; 
 padding:5px; 
-border:solid 1px #dddddd;
-color:#FFF; 
+color:#FFF;
+margin-left:-10px;
+background-color:#00a1d2;
+
 }
-li:hover
+#pagination li:hover
 { 
 color:#FF0084; 
 cursor: pointer; 
+
 }
 
 
@@ -147,7 +142,7 @@ cursor: pointer;
     <div id="nav">
     	<ul class="sf-menu dropdown">
         	
-        	<li><a href="index.php">Home</a></li>
+        	<li><a href="home.php">Home</a></li>
             
             <li class="selected"><a class="has_submenu" href="site.php">Sites</a>
             	<ul>
@@ -174,9 +169,11 @@ cursor: pointer;
                     </ul>
             
             </li>
-            <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
+             <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
             		<ul>
-                	<li><a href="invoice.php">Invoice</a></li>
+                    <li><a href="addinvoice.php">Invoice Add</a></li>
+                	<li><a href="invoicedetails.php">Invoice Print</a></li>
+                    
                     </ul>
             </li>
             <li><a class="has_submenu" href="quotation.php">Quotation</a>
@@ -199,15 +196,21 @@ cursor: pointer;
     <br />
 	<div class="quotation"><center>Sites Details</center></div>
     <div>
-        <table class="emp_tab">
-        <tr class="emp_header">
-        <td width="150">Date</td>
-        <td width="300">Emp Assign</td>
-        <td>Site Address</td>
-        <td width="120">Action</td>
-        </tr>
-        </table>
         
+        <div id="loading" ></div>
+		<div id="content" ></div>
+        <table width="800px">
+			<tr><Td>
+			<ul id="pagination">
+				<?php
+				//Show page links
+				for($i=1; $i<=$pages; $i++)
+				{
+					echo '<li id="'.$i.'">'.$i.'</li>';
+				}
+				?>
+	</ul>	
+	</Td></tr></table>
         </div>
     </div>
     </div>

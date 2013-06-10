@@ -2,7 +2,9 @@
 include("include/database.php");
 error_reporting(0);
 if(isset($_REQUEST['submit']))
-{
+{	
+	$c=$_REQUEST['id_a'];
+	$d=date('d-m-Y');
 	$c1=$_POST['c1'];
 	$c2=$_POST['c2'];
 	$c3=$_POST['c3'];
@@ -30,7 +32,7 @@ if(isset($_REQUEST['submit']))
 	$r11=$_POST['r11'];
 	$r12=$_POST['r12'];
 	
-	$c_qry="insert into checklist(elec,h2o,ot,ut,pipesize,tanksizeut,tanksizeot,loads,schedule,lift,floors,site,note,representative,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12) values('".$c1."','".$c2."','".$c3."','".$c4."','".$c5."','".$c6."','".$c7."','".$c8."','".$c9."','".$c10."','".$c11."','".$c12."','".$c13."','".$c14."','".$r1."','".$r2."','".$r3."','".$r4."','".$r5."','".$r6."','".$r7."','".$r8."','".$r9."','".$r10."','".$r11."','".$r12."')";
+	$c_qry="insert into checklist(c_id,c_date,elec,h2o,ot,ut,pipesize,tanksizeut,tanksizeot,loads,schedule,lift,floors,site,note,representative,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12) values('".$c."','".$d."','".$c1."','".$c2."','".$c3."','".$c4."','".$c5."','".$c6."','".$c7."','".$c8."','".$c9."','".$c10."','".$c11."','".$c12."','".$c13."','".$c14."','".$r1."','".$r2."','".$r3."','".$r4."','".$r5."','".$r6."','".$r7."','".$r8."','".$r9."','".$r10."','".$r11."','".$r12."')";
 	
 	$c_res=mysql_query($c_qry);
 	
@@ -43,21 +45,21 @@ if(isset($_REQUEST['submit']))
 		echo "error";
 	}
 }
+if(isset($_REQUEST['can']))
+{
+	header("location:clients.php");
+}
 
+?>
+<?php
+	$qry_emp="select * from emp";
+	$res_emp=mysql_query($qry_emp);
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
 			
-            
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-
-<script type="text/javascript" src="js/custom.js"></script>
-
 </head>
 
 <body>
@@ -117,40 +119,40 @@ if(isset($_REQUEST['submit']))
         </tr>
         <tr><td></td></tr>
         <tr>
-        <td class="l_form" align="left">ELEC PT</td><td><input type="checkbox" name="c1" value="1" /></td><td><input type="text" class="c_in" name="r1" /></td>
+        <td class="l_form" align="left">ELEC PT</td><td><input type="checkbox" name="c1" value="Yes" /></td><td><input type="text" class="c_in" name="r1" /></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">H2O PT</td><td><input type="checkbox" name="c2" value="1"/></td><td><input type="text" class="c_in" name="r2" /></td>
+        <td class="l_form" align="left">H2O PT</td><td><input type="checkbox" name="c2" value="Yes"/></td><td><input type="text" class="c_in" name="r2" /></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">OT LADDER</td><td><input type="checkbox" name="c3" value="1"/></td><td><input type="text" class="c_in" name="r3" /></td>
+        <td class="l_form" align="left">OT LADDER</td><td><input type="checkbox" name="c3" value="Yes"/></td><td><input type="text" class="c_in" name="r3" /></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">UT LADDER</td><td><input type="checkbox" name="c4" value="1"/></td><td><input type="text" class="c_in" name="r4"/></td>
+        <td class="l_form" align="left">UT LADDER</td><td><input type="checkbox" name="c4" value="Yes"/></td><td><input type="text" class="c_in" name="r4"/></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">H2O PIPE SIZE</td><td><input type="checkbox" name="c5" value="1"/></td><td><input type="text" class="c_in" name="r5" /></td>
+        <td class="l_form" align="left">H2O PIPE SIZE</td><td><input type="checkbox" name="c5" value="Yes"/></td><td><input type="text" class="c_in" name="r5" /></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">TANK SIZE UT</td><td><input type="checkbox" name="c6" value="1"/></td><td><input type="text" class="c_in" name="r6"/></td>
+        <td class="l_form" align="left">TANK SIZE UT</td><td><input type="checkbox" name="c6" value="Yes"/></td><td><input type="text" class="c_in" name="r6"/></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">TANK SIZE OT</td><td><input type="checkbox" name="c7" value="1"/></td><td><input type="text" class="c_in" name="r7"/></td>
+        <td class="l_form" align="left">TANK SIZE OT</td><td><input type="checkbox" name="c7" value="Yes"/></td><td><input type="text" class="c_in" name="r7"/></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">LOAD SHEDDING</td><td><input type="checkbox" name="c8" value="1"/></td><td><input type="text" class="c_in" name="r8"/></td>
+        <td class="l_form" align="left">LOAD SHEDDING</td><td><input type="checkbox" name="c8" value="Yes"/></td><td><input type="text" class="c_in" name="r8"/></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">H2O SCHEDULE</td><td><input type="checkbox" name="c9" value="1"/></td><td><input type="text" class="c_in" name="r9"/></td>
+        <td class="l_form" align="left">H2O SCHEDULE</td><td><input type="checkbox" name="c9" value="Yes"/></td><td><input type="text" class="c_in" name="r9"/></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">LIFT</td><td><input type="checkbox" name="c10" value="1"/></td><td><input type="text" class="c_in" name="r10"/></td>
+        <td class="l_form" align="left">LIFT</td><td><input type="checkbox" name="c10" value="Yes"/></td><td><input type="text" class="c_in" name="r10"/></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">FLOORS</td><td><input type="checkbox" name="c11" value="1"/></td><td><input type="text" class="c_in" name="r11"/></td>
+        <td class="l_form" align="left">FLOORS</td><td><input type="checkbox" name="c11" value="Yes"/></td><td><input type="text" class="c_in" name="r11"/></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">SITE</td><td ><input type="checkbox" name="c12" value="1"/></td><td><input type="text" class="c_in" name="r12"/></td>
+        <td class="l_form" align="left">SITE</td><td ><input type="checkbox" name="c12" value="Yes"/></td><td><input type="text" class="c_in" name="r12"/></td>
         </tr>
         </table>
         <table class="c_last">
@@ -158,13 +160,25 @@ if(isset($_REQUEST['submit']))
         <td class="l_form">Note:</td><td class="l_form">Representative</td>
         </tr>
         <tr>
-        <td><input type="text" class="q_in" name="c13" /></td><td><input type="text" class="q_in" name="c14" /></td>
+        <td><textarea class="c_add" name="c13"></textarea></td>
+        <td valign="top">
+        <select class="a" name="c14">
+        <?php
+		while($row_emp=mysql_fetch_array($res_emp))
+		{
+		echo "<option>";
+		echo $row_emp[1];
+		echo "</option>";
+		}
+		?>
+        </select>
+        </td>
         </tr>
         </table>
         
         <div class="addclients_c">
          <input name="submit" class="formbutton" value=" Add " type="submit" />
-         <input name="send" class="formbutton" value="Cancel" type="submit" />
+         <input name="can" class="formbutton" value="Cancel" type="submit" />
         </div>
         </div>
         

@@ -1,10 +1,7 @@
 <?php
-	
 	include("include/database.php");
-	
 	$e_qry_f="select * from terms";
 	$e_res_f=mysql_query($e_qry_f);
-		
 ?>
 <?php
 	if(isset($_REQUEST['e_id1']))
@@ -24,16 +21,20 @@
 ?>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-			
-            
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
 
+<script type="text/javascript">
+function confirmSubmit()
+{
+var agree=confirm("Are you sure to Delete this Entry?");
+if (agree)
+	return true ;
+else
+	return false ;
+}
+
+</script>
 </head>
 
 <body>
@@ -96,11 +97,11 @@
         <div>
         <table class="emp_tab">
         <tr class="emp_header">
-        <td width="50">Term No.</td>
-        <td width="250">Terms & Conditions</td>
-        <td width="70">Action</td>        
+        <td width="50">T.No.</td>
+        <td>Terms & Conditions</td>
+        <td width="100">Action</td>        
         </tr>
-        <table class="emp_tab">
+        
         <?php
 		while($e_row=mysql_fetch_array($e_res_f))
 		{
@@ -108,16 +109,16 @@
         echo "<td width='50'>";
 		echo $e_row[0];
 		echo "</td>";
-        echo "<td width='250'>";
+        echo "<td>";
 		echo $e_row[1];
 		echo "</td>";
-        echo "<td width='70'>";
-		echo "<a href='?e_id1=$e_row[0]'><img src='images/delete.png' height='20' width='20' /></a>&nbsp;<a href='updateterm.php?e_id2=$e_row[0]'><img src='images/update.png' height='20' width='20' /></a>";
+        echo "<td width='100'>";
+		echo "<a href='?e_id1=$e_row[0]' onclick='return confirmSubmit()'>Delete</a>/<a href='updateterm.php?e_id2=$e_row[0]'>Update</a>";
 		echo "</td>";
 		echo "</tr>";
 		}
 		?>
-        </table>
+      
         </table>
         
         </div>

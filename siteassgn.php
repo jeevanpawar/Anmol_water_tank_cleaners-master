@@ -5,10 +5,14 @@
 	if(isset($_REQUEST['s_add']))
 	{	
 		$s_to=$_POST['s'];
-		$s_t1=$_POST['n'];
-		$s_t2=$_POST['b'];
+		$s_t1=$_POST['e1'];
+		$s_t2=$_POST['e2'];
+		$s_t3=$_POST['e3'];
+		$s_t4=$_POST['e4'];
+		$s_t5=$_POST['e5'];
+		$s_t6=$_POST['b'];
 			
-		$s_qry="insert into site(s_date,e_name,s_add) values('".$s_to."','".$s_t1."','".$s_t2."')";
+		$s_qry="insert into site(s_date,e1,e2,e3,e4,e5,s_add) values('".$s_to."','".$s_t1."','".$s_t2."','".$s_t3."','".$s_t4."','".$s_t5."','".$s_t6."')";
 		$s_res=mysql_query($s_qry);
 		if($s_res)
 		{
@@ -24,30 +28,12 @@
 		header("location:site.php");
 	}
 ?>
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/slider.js"></script>
-<script type="text/javascript" src="js/superfish.js"></script>
-<script type="text/javascript" src="js/custom.js"></script>
-<link rel="stylesheet" href="js/jquery-ui.css" />
-  <script src="js/jquery-1.9.1.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  
-  <script>
-  $(function() {
-    $( "#datepicker" ).datepicker({
-      showOn: "button",
-      buttonImage: "images/calendar.gif",
-      buttonImageOnly: true
-    });
-  });
-  </script>
-
-
 </head>
 
 <body>
@@ -117,11 +103,102 @@
         <tr>
         <td class="l_form">Select Emp Name:</td>
         <td>
-        <select class="a" name="n">
+        <select class="a" name="e1">
+        
          <?php
 			
 			$qry_a="select * from emp";
 			$res_a=mysql_query($qry_a);
+			echo "<option>";
+			echo " ";
+			echo "</option>";
+			while($row_a=mysql_fetch_array($res_a))
+			{	echo"<option>";
+				echo $row_a[1];
+				echo"</option>";	
+			}
+
+		?>
+        </select>
+        </td>
+        </tr>
+        <tr>
+        <td class="l_form"></td>
+        <td>
+        <select class="a" name="e2">
+         <?php
+			
+			$qry_a="select * from emp";
+			$res_a=mysql_query($qry_a);
+			echo "<option>";
+			echo " ";
+			echo "</option>";
+			while($row_a=mysql_fetch_array($res_a))
+			{
+				echo"<option>";
+				echo $row_a[1];
+				echo"</option>";	
+			}
+
+		?>
+        </select>
+        </td>
+        </tr>
+        <tr>
+        <td class="l_form"></td>
+        <td>
+        <select class="a" name="e3">
+         <?php
+			
+			$qry_a="select * from emp";
+			$res_a=mysql_query($qry_a);
+			echo "<option>";
+			echo " ";
+			echo "</option>";
+			while($row_a=mysql_fetch_array($res_a))
+			{
+				echo"<option>";
+				echo $row_a[1];
+				echo"</option>";	
+			}
+
+		?>
+        </select>
+        </td>
+        </tr>
+        <tr>
+        <td class="l_form"></td>
+        <td>
+        <select class="a" name="e4">
+         <?php
+			
+			$qry_a="select * from emp";
+			$res_a=mysql_query($qry_a);
+			echo "<option>";
+			echo " ";
+			echo "</option>";
+			while($row_a=mysql_fetch_array($res_a))
+			{
+				echo"<option>";
+				echo $row_a[1];
+				echo"</option>";	
+			}
+
+		?>
+        </select>
+        </td>
+        </tr>
+        <tr>
+        <td class="l_form"></td>
+        <td>
+        <select class="a" name="e5">
+         <?php
+			
+			$qry_a="select * from emp";
+			$res_a=mysql_query($qry_a);
+			echo "<option>";
+			echo " ";
+			echo "</option>";
 			while($row_a=mysql_fetch_array($res_a))
 			{
 				echo"<option>";
@@ -140,13 +217,14 @@
         <select class="a" name="b">
          <?php
 			
-			$qry_a="select * from clients";
+			$qry_a="select * from clients order by c_id desc";
 			$res_a=mysql_query($qry_a);
+				
 			while($row_a=mysql_fetch_array($res_a))
 			{
-				echo"<option value='$row_a[4]'>";
+				echo"<option>";
 				echo $row_a[2];
-				echo "";
+				echo " ";
 				echo $row_a[3];
 				echo"</option>";	
 			}

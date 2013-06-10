@@ -320,7 +320,7 @@ ul.styledlist li {
 #nav ul ul li a {
 	margin-left:-35px;
 	float: none;
-	margin-top:-5px;
+	margin-top:-9px;
 	width: 110px;
 }
 
@@ -345,7 +345,7 @@ ul.styledlist li {
 
 #nav ul li li a:hover, #nav ul li.sfHover li a:hover {
 	border-top: 3px solid #fff;
-	background-color:#06C;
+	background-color:#fff;
 }/*** ESSENTIAL STYLES ***/
 .sf-menu, .sf-menu * {
 	margin:			0;
@@ -601,7 +601,7 @@ div#footer-links p {
 .q_in
 {
 	width:175px;
-	height:25px;
+	height:30px;
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
@@ -644,6 +644,16 @@ div#footer-links p {
 {
 	width:175px;
 	height:80px;
+	background-color:#333;
+	opacity:0.5;
+	font-size:20px;
+	border:none;
+	color:#fff;
+}
+.q_add_i
+{
+	width:175px;
+	height:35px;
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
@@ -751,11 +761,19 @@ div#footer-links p {
 }
 .n
 {
-	background-color:#F60;
+	
+	background-color:#00a1d2;
 	color:#000;
+	padding:2px 0px 2px 0px;
+	font-size:12px;
 	font-weight:bold;
 	border:1px solid #000;
 	
+}
+.n a
+{
+	text-decoration:none;
+	color:#000;
 }
 .n:hover
 {
@@ -767,14 +785,14 @@ div#footer-links p {
 	height:25px;
 	text-align:center;
 	background-color:#333;
-	color:#FFF;
+	color:#00a1d2;
 	font-size:14px;
 	letter-spacing:2px;
 }
 .addemp_tab
 {
 	width:500px;
-	height:300px;
+	height:500px;
 	margin-top:20px;
 	margin-left:400px;
 }
@@ -832,13 +850,22 @@ select
 option
 {
 	background:#FFF;
+	font-size:18px;
 	color:#000;
+}
+.check
+{
+	background-color:#333;
+	border:none;
+	color:#FFF;
+	text-align:center;
+	width:50px;
 }
 .checklist
 {
 	margin-top:10px;
-	margin-left:150px;
-	width:862px;
+	margin-left:100px;
+	width:990px;
 	height:510px;
 	text-align:center
 }
@@ -847,9 +874,20 @@ option
 	width:500px;
 	height:100px;
 }
+.c_add
+{
+	width:320px;
+	height:120px;
+	background-color:#333;
+	opacity:0.5;
+	font-size:18px;
+	border:none;
+	color:#fff;
+}
+
 .c_in
 {
-	width:350px;
+	width:650px;
 	height:25px;
 	background-color:#333;
 	opacity:0.5;
@@ -860,14 +898,21 @@ option
 .c_last
 {
 	height:100px;
-	width:500px;
-	margin-left:150px;
+	width:700px;
+	margin-top:15px;
+	margin-left:100px;
 }
 .addclients_c
 {
 	margin-top:-50px;
-	margin-left:705px;
+	margin-left:840px;
 }
+.addclients_can
+{
+	margin-top:-50px;
+	margin-left:960px;
+}
+
 .total
 {
 	height:30px;
