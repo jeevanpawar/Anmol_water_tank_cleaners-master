@@ -1,12 +1,26 @@
 <?php
+
 error_reporting(0);
+
 include("include/database.php");
-$a=date('d-m-Y');
-$b=date('d-m-Y', strtotime("+5 days"));
 
-$qry="select * from reminder where r1='$b'";
+$a=date('Y-m-d');
+$b=date('Y-m-d', strtotime("+1 days"));
+$c=date('Y-m-d', strtotime("+4 days"));
+$d=date('Y-m-d', strtotime("+8 days"));
 
-$res=mysql_query($qry);
+$qry_1="select * from reminder where r_date='$a'";
+$res_1=mysql_query($qry_1);
+
+$qry_2="select * from reminder where r_date='$b'";
+$res_2=mysql_query($qry_2);
+
+$qry_4="select * from reminder where r_date='$c'";
+$res_4=mysql_query($qry_4);
+
+$qry_8="select * from reminder where r_date='$d'";
+$res_8=mysql_query($qry_8);
+
 
 ?>
 <html>
@@ -15,84 +29,122 @@ $res=mysql_query($qry);
 <link rel="stylesheet" href="styles.css" type="text/css" />
 </head>
 
-<body>
+<body onLoad="setInterval('window.location.reload()', 10000);">
 <div id="container">
 	
-    <div id="nav">
-    	<ul class="sf-menu dropdown">
-        	
-        	<li class="selected"><a href="home.php">Home</a></li>
-            <li ><a class="has_submenu" href="site.php">Sites</a>
-            		<ul>
-                	<li><a href="siteassgn.php">Assign To</a></li>
-                </ul>
-            </li>
-            <li ><a href="amcreport.php">AMC</a>
-            </li>
-            
-            
-            <li><a class="has_submenu" href="clients.php">Clients</a>
-            	<ul>
-                	<li><a href="addclients.php">Add Clients</a></li>
-                </ul>
-            
-            </li>
-            <li><a class="has_submenu" href="employee.php">Employees</a>
-            		<ul>
-                	<li><a href="addepm.php">Add Employee</a></li>
-                    
-                    </ul>
-            
-            </li>
-            <li><a href="payment.php">Payments</a>
-            		
-            </li>
-            <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
-            		<ul>
-                    <li><a href="addinvoice.php">Invoice Add</a></li>
-                
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="quotation.php">Quotation</a>
-            		<ul>
-                    <li><a href="addquo.php">Quotation Add</a></li>
-                	
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="term.php">Terms & Conditions</a>
-            <ul>
-              	<li><a href="addterm.php">Add Terms</a></li>
-            </ul>
-           </li>
-       
-        </ul>
-    </div>
+    <?php
+	include("header.php");
+	?>
     
     <div id="sub-header">
 		<div class="quo">
     	<br />
-		<div class="quotation"><center>Todays Reminders</center></div>
+		<div class="quotation"><center>Anmol Water Tank : Reminders</center></div>
         <table class="emp_tab">
         <tr class="emp_header">
+        <td width="70">In.No.</td>
         <td width="350">Client Name</td>
         <td>Description</td>
         <td width="150">Actual Date</td>
+        <td width="80">After</td>
+        <td width="80">Update</td>
         </tr>
-        </table>
-        
-        <table class="emp_tab">
         <?php
-			while($row=mysql_fetch_array($res))
+			while($row_1=mysql_fetch_array($res_1))
 			{
-				echo"<tr>";
+				echo"<tr class='emp_header'>";
 				echo "<td>";
-				echo $row[1];
+				echo $row_1[1];
 				echo "</td>";
 				echo "<td>";
-				echo $row[2];
+				echo $row_1[2];
 				echo "</td>";
 				echo "<td>";
-				echo $row[4];
+				echo $row_1[3];
+				echo "</td>";
+				echo "<td>";
+				echo $row_1[4];
+				echo "</td>";
+				echo "<td class='today'>";
+				echo "<a href=''> &nbsp;Today&nbsp; </a>";
+				echo "</td>";
+				echo "<td class='up'>";
+				echo "<a href='r_update.php?id=$row_1[0]'>Update</a>";
+				echo "</td>";
+				echo"</tr>";
+			}
+		?>
+        <?php
+			while($row_2=mysql_fetch_array($res_2))
+			{
+				echo"<tr class='emp_header'>";
+				echo "<td>";
+				echo $row_2[1];
+				echo "</td>";
+				echo "<td>";
+				echo $row_2[2];
+				echo "</td>";
+				echo "<td>";
+				echo $row_2[3];
+				echo "</td>";
+				echo "<td>";
+				echo $row_2[4];
+				echo "</td>";
+				echo "<td class='tomarrow'>";
+				echo "<a href=''>1 Day's</a>";
+				echo "</td>";
+				echo "<td class='up'>";
+				echo "<a href='r_update.php?id=$row_2[0]'>Update</a>";
+				echo "</td>";
+				echo"</tr>";
+			}
+		?>
+		<?php
+			while($row_4=mysql_fetch_array($res_4))
+			{
+				echo"<tr class='emp_header'>";
+				echo "<td>";
+				echo $row_4[1];
+				echo "</td>";
+				echo "<td>";
+				echo $row_4[2];
+				echo "</td>";
+				echo "<td>";
+				echo $row_4[3];
+				echo "</td>";
+				echo "<td>";
+				echo $row_4[4];
+				echo "</td>";
+				echo "<td class='fourth'>";
+				echo "<a href=''>4 Day's</a>";
+				echo "</td>";
+				echo "<td class='up'>";
+				echo "<a href='r_update.php?id=$row_4[0]'>Update</a>";
+				echo "</td>";
+				echo"</tr>";
+			}
+		?>
+        <?php
+			while($row_8=mysql_fetch_array($res_8))
+			{
+				echo"<tr class='emp_header'>";
+				echo "<td>";
+				echo $row_8[1];
+				echo "</td>";
+				echo "<td>";
+				echo $row_8[2];
+				echo "</td>";
+				echo "<td>";
+				echo $row_8[3];
+				echo "</td>";
+				echo "<td>";
+				echo $row_8[4];
+				echo "</td>";
+				echo "<td class='eight'>";
+				echo "<a href=''>8 Day's</a>";
+				echo "</td>";
+				echo "<td class='up'>";
+				echo "<a href='r_update.php?id=$row_8[0]'>Update</a>";
 				echo "</td>";
 				echo"</tr>";
 			}

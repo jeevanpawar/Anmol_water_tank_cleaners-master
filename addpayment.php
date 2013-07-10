@@ -1,22 +1,46 @@
 <?php
-
+	
+	error_reporting(0);
 	include("include/database.php");
 	$p=$_REQUEST['p_id'];
-	$p_qry="select * from invoice where c_id=".$p;
+	$p_qry="select * from invoice where i_id=".$p;
 	$p_res=mysql_query($p_qry);
 	$p_row=mysql_fetch_array($p_res);
+	
+
+	$pid_qry="select SUM(total) from sub_invoice where i_id=".$p;
+	$pid_res=mysql_query($pid_qry);
+	$row_pid=mysql_fetch_array($pid_res);
+	
+	$r_i=$_REQUEST['p_id'];
+	$r_c=$_REQUEST['c_id'];
+	
+	$qry_re="select * from partial_payment where i_id='$r_i' and c_id='$r_c'";
+	$res_re=mysql_query($qry_re);
+	$row_re=mysql_fetch_array($res_re);
+	 
+	
+	$qry_res="select SUM(p_amt) from partial_payment where i_id='$r_i' and c_id='$r_c'";
+	$res_res=mysql_query($qry_res);
+	$row_res=mysql_fetch_array($res_res);
+	
+	$bal=$row_re[7]-$row_res[0];
+	
 		
+	
 	if(isset($_REQUEST['e_add']))
 	{
+		$c=$_REQUEST['c_id'];
 		$p_t1=$_POST['t1'];
 		$p_t2=$_POST['t2'];
 		$p_t3=$_POST['t3'];
 		$p_t4=$_POST['t4'];
 		$p_t5=$_POST['t5'];
+		$date=date('Y-m-d', strtotime($p_t5)); 
 		$p_t6=$_POST['t6'];
-			
+		$p_t7=$_POST['t7'];
 		
-		$pa_qry="insert into partial_payment(i_id,c_name,p_mode,c_no,p_date,p_amt) values('".$p_t1."','".$p_t2."','".$p_t3."','".$p_t4."','".$p_t5."','".$p_t6."')";
+		$pa_qry="insert into partial_payment(i_id,c_id,c_name,p_mode,c_no,p_date,i_amt,p_amt) values('".$p_t1."','".$c."','".$p_t2."','".$p_t3."','".$p_t4."','".$date."','".$p_t7."','".$p_t6."')";
 		$pa_res=mysql_query($pa_qry);
 		if($pa_res)
 		{
@@ -38,28 +62,14 @@
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-
 <script type="text/javascript" language="javascript">
 function validateMyForm ( ) { 
     var isValid = true;
-    if ( document.form1.ename.value == "" ) 
+    if ( document.form1.p_amt.value == "0" ) 
 	{ 
-	    alert ( "Please enter Employee Name" ); 
+	    alert ( "Amount Is zero" ); 
 	    isValid = false;
     }
-	    else if ( document.form1.add.value == "") { 
-            alert ( "please enter Address" ); 
-            isValid = false;
-		}
-		 else if ( document.form1.contact.value == "" ) { 
-            alert ( "Please enter Contact Number" ); 
-            isValid = false;
-    } 
-	
-		 else if ( document.form1.des.value == "" ) { 
-            alert ( "Please enter Designation" ); 
-            isValid = false;
-    } 
     return isValid;
 }
 </script>
@@ -69,54 +79,9 @@ function validateMyForm ( ) {
 <body>
 <div id="container">
 	
-    <div id="nav">
-    	<ul class="sf-menu dropdown">
-        	
-        	<li><a href="index.php">Home</a></li>
-            <li ><a class="has_submenu" href="site.php">Sites</a>
-            <ul>
-                	<li><a href="siteassgn.php">Assign To</a></li>
-                </ul>
-            </li>
-            <li ><a class="has_submenu" href="site.php">AMC</a>
-            	<ul>
-                    <li><a href="amcreport.php">Amc Details</a></li>
-                </ul>
-
-            </li>
-            <li><a class="has_submenu" href="clients.php">Clients</a>
-            	<ul>
-                	<li><a href="addclients.php">Add Clients</a></li>
-                    
-                    </ul>
-            
-            </li>
-            <li class="selected"><a class="has_submenu" href="employee.php">Employees</a>
-            		<ul>
-                	<li><a href="addepm.php">Add Employee</a></li>
-                    <li><a href="employee.php">Employee Details</a></li>
-                    </ul>
-            
-            </li>
-           <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
-            		<ul>
-                	<li><a href="invoice.php">Invoice</a></li>
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="quotation.php">Quotation</a>
-            		<ul>
-                	<li><a href="quotationI.php">Quotation I</a></li>
-                    <li><a href="quotationII.php">Quotation II</a></li>
-                    </ul>
-            </li>
-            <li><a class="has_submenu"  href="term.php">Terms & Conditions</a>
-            <ul>
-              	<li><a href="addterm.php">Add Terms</a></li>
-            </ul>
-           </li>
-       
-        </ul>
-    </div>
+    <?php
+	include("header.php");
+	?>
     
     <div id="sub-header">
     <div class="quo">
@@ -136,7 +101,7 @@ function validateMyForm ( ) {
         <tr>
         <td class="l_form">Payment Mode:</td>
         <td>
-        <select name="t3">
+        <select class="a" name="t3">
         <option>By Check</option>
         <option>By Cash</option>
         </select>
@@ -151,8 +116,16 @@ function validateMyForm ( ) {
         <td><input id="des" type="text" class="q_in" name="t5" value="<?php echo $d; ?>"></td>
         </tr>
         <tr>
-        <td class="l_form">Amount:</td>
-        <td><input id="des" type="text" class="q_in" name="t6"></td>
+        <td class="l_form">Invoice Amt:</td>
+        <td><input id="i_amt" type="text" class="q_in" name="t7" value="<?php echo $row_pid[0]; ?>"></td>
+        </tr>
+        <tr>
+        <td class="l_form">Remaining Amt:</td>
+        <td><input id="i_amt" type="text" class="q_in" value="<?php echo $bal; ?>"></td>
+        </tr>
+        <tr>
+        <td class="l_form">Pay Amount:</td>
+        <td><input id="p_amt" type="text" class="q_in" name="t6" value="0"></td>
         </tr>
         
         </div>

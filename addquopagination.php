@@ -54,7 +54,7 @@ $page=$_GET['page'];
 		echo $c_row[4];
 		echo "</td>";
 		
-        echo "<td width='100'>";
+        echo "<td width='100'class='print'>";
 		echo "<a href='quotationI.php?c_id2=$c_row[0]'>Create</a>";
 		echo "</td>";
 		echo "</tr>";

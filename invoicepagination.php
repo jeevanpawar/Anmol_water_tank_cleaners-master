@@ -1,17 +1,12 @@
 <?php
-
 include("include/database.php");
-
+error_reporting(0);
 $per_page = 20; 
-
 if($_GET)
 {
 $page=$_GET['page'];
 }
 
-
-
-//get table contents
 $start = ($page-1)*$per_page;
 $sql = "select * from invoice order by i_id desc limit $start,$per_page";
 $rsd = mysql_query($sql);
@@ -23,7 +18,8 @@ $rsd = mysql_query($sql);
                 <td width="250">Client Name</td>
                 <td width="160">Date</td>
                 <td>Site Address</td>
-                <td width="70">Amount</td>
+                <td width="70">Update</td>
+                <td width="70">Print</td>
                 </tr>
                 
         <?php
@@ -35,13 +31,16 @@ $rsd = mysql_query($sql);
                 echo $row[0];
                 echo "</td>";
                 echo "<td width='250'>";
-                echo $row[2];
+                echo $row[3];
                 echo "</td>";
                 echo "<td width='160'>";
                 echo $row[1];
                 echo "</td>";
                 echo "<td width='500'>";
-                echo $row[3];
+                echo $row[4];
+                echo "</td>";
+				echo "<td width='70' class='print'>";
+                echo "<a href='updateinv.php?id1=$row[0]'>Update</a>";
                 echo "</td>";
 				echo "<td width='70' class='print'>";
                 echo "<a href='report.php?id=$row[0]'>Print</a>";

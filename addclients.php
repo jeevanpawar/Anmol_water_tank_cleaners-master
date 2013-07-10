@@ -12,8 +12,10 @@ include("include/database.php");
 	$c_t8=$_POST['c_mo'];
 	$c_t9=$_POST['c_email'];
 	$c_t10=$_POST['c_site'];
+	$c_t11=$_POST['c_date'];
+	$c_t12=$_POST['c_comp'];
 		
-	$c_qry="insert into clients(c_first,c_last,c_add,c_city,c_pin,c_ph,c_mo,c_email,c_site) values('".$c_t1."','".$c_t2."','".$c_t3."','".$c_t4."','".$c_t6."','".$c_t7."','".$c_t8."','".$c_t9."','".$c_t10."')";
+	$c_qry="insert into clients(c_date,c_first,c_last,c_add,c_city,c_pin,c_ph,c_mo,c_email,c_site,c_comp) values('".$c_t11."','".$c_t1."','".$c_t2."','".$c_t3."','".$c_t4."','".$c_t6."','".$c_t7."','".$c_t8."','".$c_t9."','".$c_t10."','".$c_t12."')";
 	$c_res=mysql_query($c_qry);
 	if($c_res)
 	{
@@ -21,7 +23,7 @@ include("include/database.php");
 	}
 	else
 	{
-		header("location:addclients.php");
+		header("location:clients.php");
 	}
 	}
 	if(isset($_REQUEST['can']))
@@ -34,48 +36,19 @@ include("include/database.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
-			
+	
             
 
 <script type="text/javascript" language="javascript">
 function validateMyForm ( ) { 
     var isValid = true;
-    if ( document.form1.fname.value == "" ) 
+    if ( document.form1.address.value == "" ) 
 	{ 
-	    alert ( "Please enter First Name" ); 
+	    alert ( "Please Enter Address Plz" ); 
 	    isValid = false; 
     }
-	    else if ( document.form1.lname.value == "") { 
-            alert ( "please enter Last Name" ); 
-            isValid = false;
-		}
-		 else if ( document.form1.address.value == "" ) { 
-            alert ( "Please enter Address" ); 
-            isValid = false;
-    } 
-	
-		 else if ( document.form1.city.value == "" ) { 
-            alert ( "Please enter City" ); 
-            isValid = false;
-    } 
-	
-		 else if ( document.form1.pin.value == "" ) { 
-            alert ( "Please enter Pincode" ); 
-            isValid = false;
-    } 
-	
-		 else if ( document.form1.email.value == "" ) { 
-            alert ( "Please enter Email Address" ); 
-            isValid = false;
-    } 
-	
-		 else if ( document.form1.ph.value == "" ) { 
-            alert ( "Please enter Phone Number" ); 
-            isValid = false;
-    } 
-	
-		 else if ( document.form1.mo.value == "" ) { 
-            alert ( "Please enter Mobile Number" ); 
+	    else if ( document.form1.mo.value == "" ) { 
+            alert ( "Please Enter Mobile Number" ); 
             isValid = false;
     } 
     return isValid;
@@ -87,55 +60,9 @@ function validateMyForm ( ) {
 <body>
 <div id="container">
 	
-    <div id="nav">
-    	<ul class="sf-menu dropdown">
-        	
-        	<li ><a href="home.php">Home</a></li>
-            <li ><a class="has_submenu" href="site.php">Sites</a>
-            		<ul>
-                	<li><a href="siteassgn.php">Assign To</a></li>
-                </ul>
-            </li>
-            <li ><a href="amcreport.php">AMC</a>
-            </li>
-            
-            
-            <li class="selected"><a class="has_submenu" href="clients.php">Clients</a>
-            	<ul>
-                	<li><a href="addclients.php">Add Clients</a></li>
-                </ul>
-            
-            </li>
-            <li><a class="has_submenu" href="employee.php">Employees</a>
-            		<ul>
-                	<li><a href="addepm.php">Add Employee</a></li>
-                    
-                    </ul>
-            
-            </li>
-            <li><a href="payment.php">Payments</a>
-            		
-            </li>
-            <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
-            		<ul>
-                    <li><a href="addinvoice.php">Invoice Add</a></li>
-                	
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="quotation.php">Quotation</a>
-            		<ul>
-                    <li><a href="addquo.php">Quotation Add</a></li>
-                	
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="term.php">Terms & Conditions</a>
-            <ul>
-              	<li><a href="addterm.php">Add Terms</a></li>
-            </ul>
-           </li>
-       
-        </ul>
-    </div>
+    <?php
+	include("header.php");
+	?>
     
     <div id="sub-header">
     <div class="quo">
@@ -146,16 +73,18 @@ function validateMyForm ( ) {
         <table class="q_clients">
                 <tr><td class="l_form">First Name:</td><td><input id="fname" class="q_in" type="text" name="c_fname" /></td></tr>
                 <tr><td class="l_form">Last Name:</td><td><input id="lname" class="q_in" type="text" name="c_lname"/></td></tr>
+                <tr><td class="l_form">Company Name:</td><td><input id="lname" class="q_in" type="text" name="c_comp"/></td></tr>
                 <tr><td class="l_form">Address:</td><td><textarea id="address" class="q_add" name="c_address"></textarea></td></tr>
                 <tr><td class="l_form">City:</td><td><input id="city" class="q_in" type="text" name="c_city"/></td></tr>
-				<tr><td class="l_form">Pin Code:</td><td><input id="pin" class="q_in" type="text" name="c_pin"/></td></tr>
-                <tr><td class="l_form">Email Id:</td><td><input id="email" class="q_in" type="text" name="c_email"/></td></tr>
+				<tr><td class="l_form">Pin Code:</td><td><input class="q_in" type="text" name="c_pin"/></td></tr>
+                
                 </table>
                 <table class="q_clients2">
+                <tr><td class="l_form">Email Id:</td><td><input class="q_in" type="text" name="c_email"/></td></tr>
                 <tr><td class="l_form">Phone No:</td><td><input id="ph" class="q_in" type="text" name="c_ph"/></td></tr>
                 <tr><td class="l_form">Mobile No:</td><td><input id="mo" class="q_in" type="text" name="c_mo"/></td></tr>
                 
-                <tr><td class="l_form">Date:</td><td><input class="q_in" type="text" name="c_state" value="<?php  echo date("d-m-Y"); ?>"/></td></tr>
+                <tr><td class="l_form">Date:</td><td><input class="q_in" type="text" name="c_date" value="<?php  echo date("d-m-Y"); ?>"/></td></tr>
                 
                 <td class="l_form">Site Type:</td>
                 <td>

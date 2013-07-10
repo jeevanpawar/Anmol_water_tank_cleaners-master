@@ -40,53 +40,9 @@ else
 <body>
 <div id="container">
 	
-    <div id="nav">
-    	<ul class="sf-menu dropdown">
-        	
-        	<li><a href="home.php">Home</a></li>
-            <li ><a class="has_submenu" href="site.php">Sites</a>
-            		<ul>
-                	<li><a href="siteassgn.php">Assign To</a></li>
-                </ul>
-            </li>
-            <li ><a href="amcreport.php">AMC</a>
-            </li>
-            
-            
-            <li><a class="has_submenu" href="clients.php">Clients</a>
-            	<ul>
-                	<li><a href="addclients.php">Add Clients</a></li>
-                </ul>
-            
-            </li>
-            <li class="selected"><a class="has_submenu" href="employee.php">Employees</a>
-            		<ul>
-                	<li><a href="addepm.php">Add Employee</a></li>
-                    </ul>
-            
-            </li>
-            <li><a href="payment.php">Payments</a>
-            		            </li>
-            <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
-            		<ul>
-                    <li><a href="addinvoice.php">Invoice Add</a></li>
-                	
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="quotation.php">Quotation</a>
-            		<ul>
-                    <li><a href="addquo.php">Quotation Add</a></li>
-
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="term.php">Terms & Conditions</a>
-            <ul>
-              	<li><a href="addterm.php">Add Terms</a></li>
-            </ul>
-           </li>
-       
-        </ul>
-    </div>
+    <?php
+	include("header.php");
+	?>
     
     <div id="sub-header">
     <div class="quo">

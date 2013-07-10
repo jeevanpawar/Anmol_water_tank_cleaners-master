@@ -1,6 +1,40 @@
+<script type="text/javascript">
+function confirmSubmit()
+{
+var agree=confirm("Are you sure to Delete this Entry?");
+if (agree)
+	return true ;
+else
+	return false ;
+}
+
+</script>	
 <?php
 include("include/database.php");
 error_reporting(0);	
+
+	if(isset($_REQUEST['c_id1']))
+	{
+		$del=$_REQUEST['c_id1'];
+		$c_del="delete from clients where c_id=".$del;
+		$c_dres=mysql_query($c_del);
+		
+		$c_check="delete from checklist where c_id=".$del;
+		$c_res=mysql_query($c_check);
+		
+		if($c_dres)
+		{
+			header("location:clients.php");
+		}
+		else
+		{
+			echo "error";
+		}
+	}
+?>
+
+
+<?php
 
 $per_page = 20; 
 
@@ -15,23 +49,6 @@ $page=$_GET['page'];
 	$c_res_f=mysql_query($c_qry_f);
 		
 ?>
-<?php
-	if(isset($_REQUEST['c_id1']))
-	{
-		$c_d=$_REQUEST['c_id1'];
-		$c_del="delete from clients where c_id=".$c_d;
-		$c_dres=mysql_query($c_del);
-		if($c_dres)
-		{
-			header("location:clients.php");
-		}
-		else
-		{
-			echo "error";
-		}
-	}
-?>
-
         <table class="emp_tab">
         <tr class="emp_header">
         <td width="250">Client Name</td>
@@ -58,7 +75,7 @@ $page=$_GET['page'];
 		echo "<a href='checklist.php?id_a=$c_row[0]'>Add</a>&nbsp;<a href='viewchecklist.php?id_v=$c_row[0]'>View</a>";
 		echo "</td>";
         echo "<td width='100' class='print'>";
-		echo "<a href='?c_id1=$c_row[0]'>Delete</a>&nbsp;<a href='updateclients.php?c_id2=$c_row[0]'>Update</a>&nbsp;<a href='clientsview.php?c_id3=$c_row[0]'>View</a>";
+		echo "<a href='clientspagination.php?c_id1=$c_row[0]' onclick='return confirmSubmit()'>Delete</a>&nbsp;<a href='updateclients.php?c_id2=$c_row[0]'>Update</a>&nbsp;<a href='clientsview.php?c_id3=$c_row[0]'>View</a>";
 		echo "</td>";
 		echo "</tr>";
 		}

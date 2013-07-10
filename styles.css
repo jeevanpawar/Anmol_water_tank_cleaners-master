@@ -6,6 +6,75 @@ body {
 	font-size: 13px;
 	color: #666;
 }
+.to
+{
+	margin-left:900px;
+	padding:3px 0px 3px 0px;
+	letter-spacing:1px;
+	font-size:18px;
+	color:#FFF;
+}
+.exp
+{
+	background-color:#999;
+	color:#000;
+	font-size:18px;
+	float:right;
+	padding:3px 0px 3px 0px;
+}
+.eight a
+{
+	padding:3px 3px 3px 3px;
+	background-color:#FF0;
+	color:#000;
+	border-radius:5px;
+	text-decoration:none;
+}
+.fourth a
+{
+	padding:3px 3px 3px 3px;
+	background-color:#FC0;
+	color:#000;
+	border-radius:5px;
+	text-decoration:none;
+}
+
+.tomarrow a
+{
+	padding:3px 3px 3px 3px;
+	background-color:#F90;
+	color:#000;
+	border-radius:5px;
+	text-decoration:none;
+}
+
+.today a
+{
+	padding:3px 3px 3px 3px;
+	background-color:#F60;
+	color:#000;
+	border-radius:5px;
+	text-decoration:none;
+}
+.up a
+{
+	padding:3px 3px 3px 3px;
+	background-color:#00a1d2;
+	color:#000;
+	border-radius:5px;
+	text-decoration:none;
+}
+
+.new
+{
+	color:#FFF;
+	margin-top:20px;
+	margin-left:500px;
+	height:150px;
+	width:700px;
+	border:5px solid #09C;
+
+}
 .print a
 {
 	padding:2px 13px 2px 13px;
@@ -263,7 +332,6 @@ ul.styledlist li {
 }
 
 #nav {
-	margin-top:5px;
 	background:#00a1d2;
 	height: 50px;
 	width: 1315px;
@@ -277,9 +345,9 @@ ul.styledlist li {
 
 #nav ul {
 	list-style: none;
-	padding: 0;
-	margin-left: 50px;
+	margin-left: 5px;
 	height: 50px;
+	
 }
 
 #nav ul ul {
@@ -306,7 +374,7 @@ ul.styledlist li {
 }
 
 #nav ul li a.has_submenu {
-	background:  transparent url('images/submenu-item.gif') no-repeat scroll right center;
+	background: transparent url('images/submenu-item.gif') no-repeat scroll right center;
 	padding-right: 30px;
 	
 }
@@ -318,10 +386,10 @@ ul.styledlist li {
 
 
 #nav ul ul li a {
-	margin-left:-50px;
+	margin-left:-5px;
 	float: none;
-	margin-top:-9px;
 	width: 110px;
+	margin-top:-10px;
 }
 
 #nav ul li.selected li a { 
@@ -330,22 +398,24 @@ ul.styledlist li {
 
 #nav ul li.selected a, #nav ul li.selected a:hover, #nav ul li.selected li.selected a  {
 	color: #000;
+
 	border-top: 3px solid #FFF;
 }
 
 #nav ul ul li.selected a, #nav ul ul li.selected a:hover {
 	text-decoration: underline;
+
 }
 
 #nav ul li a:hover, #nav ul li.sfHover a, #nav ul ul a {
 	color: #000;
-	background-color:#FFF;
+	background-color:#00a1d2;
 	border-top: 3px solid #FFF;
 }
 
 #nav ul li li a:hover, #nav ul li.sfHover li a:hover {
 	border-top: 3px solid #fff;
-	background-color:#fff;
+	background-color:#00a1d2;
 }/*** ESSENTIAL STYLES ***/
 .sf-menu, .sf-menu * {
 	margin:			0;
@@ -561,6 +631,12 @@ div#footer-links p {
 	margin-top:20px;
 	margin-left:740px;
 }
+.q_button5
+{
+	margin-top:20px;
+	margin-left:962px;
+}
+
 .quotation
 {
 	font-size:22px;
@@ -572,7 +648,6 @@ div#footer-links p {
 	width:95%;
 	height:30px;
 	margin-top:2px;
-	text-shadow:-1px -1px #CE5709;
 	padding:3px 0px 0px 0px;
 }
 .quotationI
@@ -587,7 +662,6 @@ div#footer-links p {
 	height:30px;
 	margin-left:100px;
 	margin-top:2px;
-	text-shadow:-1px -1px #CE5709;
 	padding:3px 0px 0px 0px;
 }
 .l_form
@@ -620,24 +694,38 @@ div#footer-links p {
 }
 .des
 {
-	width:1000px;
-	height:300px;
-	margin-left:100px;
+	width:1200px;
+	margin-left:0px;
 	text-align:center;
 }
 .q_info
 {
 	width:320px;
-	height:250px;
+	height:450px;
 	margin-left:255px;
 	
 }
 .q_info2
 {
 	width:320px;
-	height:250px;
+	height:450px;
 	margin-left:680px;
-	margin-top:-260px;
+	margin-top:-460px;
+	
+}
+.q_info3
+{
+	width:320px;
+	height:220px;
+	margin-left:255px;
+	
+}
+.q_info4
+{
+	width:320px;
+	height:220px;
+	margin-left:680px;
+	margin-top:-220px;
 	
 }
 .q_add
@@ -650,6 +738,18 @@ div#footer-links p {
 	border:none;
 	color:#fff;
 }
+
+.q_term
+{
+	width:475px;
+	height:200px;
+	background-color:#333;
+	opacity:0.5;
+	font-size:20px;
+	border:none;
+	color:#fff;
+}
+
 .q_add_i
 {
 	width:175px;
@@ -662,11 +762,11 @@ div#footer-links p {
 }
 .des_in
 {
-	width:100%;
-	height:125%;
+	width:620px;
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
+	text-align:center;
 	color:#FFF;
 	border:none;
 	
@@ -674,7 +774,8 @@ div#footer-links p {
 .des_cap
 {
 	width:100%;
-	height:125%;
+	text-align:center;
+	
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
@@ -684,7 +785,8 @@ div#footer-links p {
 .des_ser
 {
 	width:100%;
-	height:125%;
+	text-align:center;
+	
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
@@ -694,7 +796,8 @@ div#footer-links p {
 .des_amt
 {
 	width:100%;
-	height:125%;
+	text-align:center;
+	
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
@@ -704,22 +807,25 @@ div#footer-links p {
 .des_r
 {
 	width:100%;
-	height:125%;
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
 	color:#FFF;
 	border:none;
+		text-align:center;
+
 }
 .des_q
 {
 	width:100%;
-	height:125%;
+	
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
 	color:#FFF;
 	border:none;
+		text-align:center;
+
 }
 .amt_w
 {
@@ -729,7 +835,6 @@ div#footer-links p {
 .des_w
 {
 	width:69%;
-	height:125%;
 	background-color:#333;
 	opacity:0.5;
 	font-size:18px;
@@ -742,6 +847,14 @@ div#footer-links p {
 	width:1200px;
 	height:auto;
 }
+.emp_month
+{
+	
+	margin-top:5px;
+	width:1178px;
+	height:auto;
+}
+
 .emp_tab1
 {
 	margin-top:5px;
@@ -762,10 +875,10 @@ div#footer-links p {
 .n
 {
 	
-	background-color:#00a1d2;
+	background-color:#FFF;
 	color:#000;
-	padding:2px 0px 2px 0px;
-	font-size:12px;
+	padding:2px 2px 2px 3px;
+	font-size:13px;
 	font-weight:bold;
 	border:1px solid #000;
 	
@@ -785,9 +898,41 @@ div#footer-links p {
 	height:25px;
 	text-align:center;
 	background-color:#333;
-	color:#00a1d2;
+	color:#09C;
 	font-size:14px;
 	letter-spacing:2px;
+}
+.emp_header5 td
+{
+	height:25px;
+	text-align:center;
+	background-color:#FFF;
+	color:#000;
+	font-size:17px;
+}
+
+.emp_header1 td
+{
+	height:25px;
+	background-color:#333;
+	color:#09C;
+	font-size:14px;
+	letter-spacing:2px;
+}
+.emp_header3 td
+{
+	height:20px;
+	background-color:#333;
+	color:#09C;
+	font-size:14px;
+	letter-spacing:2px;
+}
+.emp_header4 td
+{
+	height:20px;
+	background-color:#000;
+	color:#00a1d2;
+
 }
 .addemp_tab
 {
@@ -796,11 +941,45 @@ div#footer-links p {
 	margin-top:20px;
 	margin-left:400px;
 }
+.addemp_re
+{
+	width:500px;
+	height:400px;
+	margin-top:20px;
+	margin-left:400px;
+}
+
+.addemp_term
+{
+	width:700px;
+	height:400px;
+	margin-top:20px;
+	margin-left:300px;
+}
+
 .addemp_b
 {
 	margin-top:-10px;
 	margin-left:585px;
 }
+.addemp_r
+{
+	margin-top:20px;
+	margin-left:540px;
+}
+
+.addemp_reciept
+{
+	margin-top:20px;
+	margin-left:570px;
+}
+
+.addemp_t
+{
+	margin-top:-10px;
+	margin-left:495px;
+}
+
 .addamc_b
 {
 	margin-top:20px;
@@ -831,6 +1010,11 @@ div#footer-links p {
 {
 	margin-top:30px;
 	margin-left:738px;
+}
+.upclients_b
+{
+	margin-top:30px;
+	margin-left:678px;
 }
 
 
@@ -887,6 +1071,17 @@ option
 
 .c_in
 {
+	width:650px;
+	height:25px;
+	background-color:#333;
+	opacity:0.5;
+	border:none;
+	font-size:18px;
+	color:#fff;
+}
+.c_a
+{
+	margin-top:2px;
 	width:650px;
 	height:25px;
 	background-color:#333;

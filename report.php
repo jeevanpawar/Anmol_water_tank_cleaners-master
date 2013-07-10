@@ -1,11 +1,18 @@
 <?php
+error_reporting(0);
 include("include/database.php");
 
 $p=$_REQUEST['id'];
-
-$qry="select * from quotation where q_id=".$p;
+$qry="select * from invoice where i_id=".$p;
 $res=mysql_query($qry);
 $row=mysql_fetch_array($res);
+
+$qry_detail="select * from sub_invoice where i_id=".$p;
+$res_detail=mysql_query($qry_detail);
+
+$qry_t="select SUM(total) from sub_invoice where i_id=".$p;
+$res_t=mysql_query($qry_t);
+$row_t=mysql_fetch_array($res_t);
 ?>
 <?php
 
@@ -68,102 +75,112 @@ $term_res=mysql_query($term);
 {
 	
 }
+.tow
+{
+	margin-top:-90px;
+	padding-top:-60px;
+}
+.da
+{
 
+	margin-left:540px;
+}
+.texta
+{
+	width:20px;
+
+	border:1px solid #000;
+}
+.tab
+{
+	width:400px;
+	
+}
 </style>
 </head>
 
 <body>
 <br>
 <br>
-
 <div class="heading"><center>ANMOL WATER TANK CLEANERS</center></div>
 <div class="sub_heading"><center>Shop No 4, Vaibhavlakshmi Appt, Behind Prakash Petrol Pump</center></div>
 <div class="sub_heading"><center>Govind Nagar, Nashik-422009</center></div>
 <div class="sub_heading"><center>Ph:&nbsp;9970301010 / 9175299779</center></div>
 <br><br>
-<div class="quotation"><center>QUOTATION FOR AMC</center></div>
-<div class="date">Date&nbsp;:&nbsp;<label><?php echo $row[1]; ?></label></div>
-<div class="date">Quo No : <label><?php echo $row[0]; ?></label></div>
-<div>To</div>
-<div><textarea>Name:<br><?php echo $row[2]; ?></textarea></div>
-<br><br>
-<div>Kind Attn : <label><?php echo $row[4]; ?></label></div>
+<div class="quotation"><center>INVOICE</center></div>
+<div class="to">
+<div class="da">
+Invoice No : <label><?php echo $row[0]; ?></label>
 <br>
-<div>Mob No : <label><?php echo $row[5]; ?></label></div>
+P.O/W.O No : <label><?php echo $row[7]; ?></label>
+<br>
+Date&nbsp;:&nbsp;<label><?php echo $row[1]; ?></label>
 
+</div>
+<div class="tow">
+<table class="tab">
+<tr>
+<td>
+To
+</td>
+</tr>
+<tr>
+<td><textarea><?php echo $row[3]; ?></textarea></td>
+</tr>
+<tr>
+<td>
+<textarea><?php echo $row[4]; ?></textarea></td>
+</tr>
+<tr>
+<td>
+Mob No : <label><?php echo $row[6]; ?></label></td>
+</tr>
+</table>
+</div>
+</div>
 <div class="description">
 <table class="report">
 <tr>
 <td>Description</td>
-<td>Capacity</td>
-<td>Quantity</td>
-<td>Rate</td>
-<td>Service In Year</td>
-<td>Amount</td>
+<td width="40">Capacity</td>
+<td width="30">Quantity</td>
+<td width="35">Rate</td>
+<td width="35">AMC</td>
+<td width="50">Amount</td>
 </tr>
-<tr>
-<td><?php echo $row[6]; ?></td>
-<td><?php echo $row[13]; ?></td>
-<td><?php echo $row[20]; ?></td>
-<td><?php echo $row[27]; ?></td>
-<td><?php echo $row[34]; ?></td>
-<td><?php echo $row[41].' /-'; ?></td>
-</tr>
-<tr>
-<td><?php echo $row[7]; ?></td>
-<td><?php echo $row[14]; ?></td>
-<td><?php echo $row[21]; ?></td>
-<td><?php echo $row[28]; ?></td>
-<td><?php echo $row[35]; ?></td>
-<td><?php echo $row[42].' /-'; ?></td>
-</tr>
-<tr>
-<td><?php echo $row[8]; ?></td>
-<td><?php echo $row[15]; ?></td>
-<td><?php echo $row[22]; ?></td>
-<td><?php echo $row[29]; ?></td>
-<td><?php echo $row[36]; ?></td>
-<td><?php echo $row[43].' /-'; ?></td>
-</tr>
-<tr>
-<td><?php echo $row[9]; ?></td>
-<td><?php echo $row[16]; ?></td>
-<td><?php echo $row[23]; ?></td>
-<td><?php echo $row[30]; ?></td>
-<td><?php echo $row[37]; ?></td>
-<td><?php echo $row[44].' /-'; ?></td>
-</tr>
-<tr>
-<td><?php echo $row[10]; ?></td>
-<td><?php echo $row[17]; ?></td>
-<td><?php echo $row[24]; ?></td>
-<td><?php echo $row[31]; ?></td>
-<td><?php echo $row[38]; ?></td>
-<td><?php echo $row[45].' /-'; ?></td>
-</tr>
-<tr>
-<td><?php echo $row[11]; ?></td>
-<td><?php echo $row[18]; ?></td>
-<td><?php echo $row[25]; ?></td>
-<td><?php echo $row[32]; ?></td>
-<td><?php echo $row[39]; ?></td>
-<td><?php echo $row[46].' /-'; ?></td>
-</tr>
-<tr>
-<td><?php echo $row[12]; ?></td>
-<td><?php echo $row[19]; ?></td>
-<td><?php echo $row[26]; ?></td>
-<td><?php echo $row[33]; ?></td>
-<td><?php echo $row[40]; ?></td>
-<td><?php echo $row[47].' /-'; ?></td>
-</tr>
+<?php
+while($row_d=mysql_fetch_array($res_detail))
+{
+	
+	echo "<tr>";
+	echo "<td>";
+	echo $row_d[2];
+	echo "</td>";
+	echo "<td>";
+	echo $row_d[3];
+	echo "</td>";
+	echo "<td>";
+	echo $row_d[4];
+	echo "</td>";
+	echo "<td>";
+	echo $row_d[5];
+	echo "</td>";
+	echo "<td>";
+	echo $row_d[6];
+	echo "</td>";
+	echo "<td>";
+	echo $row_d[7];
+	echo "</td>";
+	echo "</tr>";
+}
+?>
 <tr>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-<td>Total Amount:</td>
-<td><?php echo $row[48].' /-'; ?></td>
+<td>Total:</td>
+<td><?php echo $row_t[0].' /-'; ?></td>
 </tr>
 </table>
 </div>
@@ -189,16 +206,16 @@ while($row=mysql_fetch_array($term_res))
 <br>
 <br>
 <br><br><br><br>
-Authorised Person:____________________
+Authorised Person Name:____________________
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 For Anmol Water Tank Cleaners
-<br><br>
-Name Signature and Stamp
-<br><br>
+<br><br><br><br>
+Authorised Person Signature and Stamp
+<br>
 By signing we accept the Rates & Terms & Conditions
 </div>
 

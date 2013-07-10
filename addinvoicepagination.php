@@ -53,8 +53,7 @@ $page=$_GET['page'];
 		echo "<td>";
 		echo $c_row[4];
 		echo "</td>";
-		
-        echo "<td width='100'>";
+		echo "<td width='100' class='print'>";
 		echo "<a href='invoice.php?c_id1=$c_row[0]'>Create</a>";
 		echo "</td>";
 		echo "</tr>";

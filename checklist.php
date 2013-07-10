@@ -3,6 +3,27 @@ include("include/database.php");
 error_reporting(0);
 if(isset($_REQUEST['submit']))
 {	
+	$a=$_POST['ut'];
+	$b = count($a);
+	for($i=0; $i<$b; $i++)
+	{
+		$id1=$_REQUEST['id_a'];
+		$q_d=$_POST['ut'][$i];
+		$qry="insert into ut(ut,c_id) values('".$q_d."','".$id1."')";
+		$res=mysql_query($qry);
+		
+	}
+	$c=$_POST['ot'];
+	$d = count($c);
+	for($j=0; $j<$d; $j++)
+	{
+		$id2=$_REQUEST['id_a'];	
+		$q_d2=$_POST['ot'][$j];
+		$qry1="insert into ot(ot,c_id) values('".$q_d2."','".$id2."')";
+		$res1=mysql_query($qry1);
+		
+	}
+
 	$c=$_REQUEST['id_a'];
 	$d=date('d-m-Y');
 	$c1=$_POST['c1'];
@@ -18,7 +39,7 @@ if(isset($_REQUEST['submit']))
 	$c11=$_POST['c11'];
 	$c12=$_POST['c12'];
 	$c13=$_POST['c13'];
-	$c14=$_POST['c14'];
+	$c14=$_POST['c14'];	
 	$r1=$_POST['r1'];
 	$r2=$_POST['r2'];
 	$r3=$_POST['r3'];
@@ -33,9 +54,7 @@ if(isset($_REQUEST['submit']))
 	$r12=$_POST['r12'];
 	
 	$c_qry="insert into checklist(c_id,c_date,elec,h2o,ot,ut,pipesize,tanksizeut,tanksizeot,loads,schedule,lift,floors,site,note,representative,r1,r2,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12) values('".$c."','".$d."','".$c1."','".$c2."','".$c3."','".$c4."','".$c5."','".$c6."','".$c7."','".$c8."','".$c9."','".$c10."','".$c11."','".$c12."','".$c13."','".$c14."','".$r1."','".$r2."','".$r3."','".$r4."','".$r5."','".$r6."','".$r7."','".$r8."','".$r9."','".$r10."','".$r11."','".$r12."')";
-	
 	$c_res=mysql_query($c_qry);
-	
 	if($c_res)
 	{
 		header("location:clients.php");
@@ -59,53 +78,37 @@ if(isset($_REQUEST['can']))
 <head>
 <title>Anmol Water Tank Cleners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<script>
+ var counter = 1;
+ function add_phone_field()
+ {
+  var obj = document.getElementById("phone");
+  var data = obj.innerHTML;
+  data += "<input class='c_a' type='text' name='ut["+counter+"]' id='person_phone"+counter+"' />";
+  obj.innerHTML = data;
+  counter++;
+  }
+ </script>
+
+<script>
+ var counter1 = 1;
+ function add_phone_field1()
+ {
+  var obj1 = document.getElementById("phone1");
+  var data1 = obj1.innerHTML;
+  data1 += "<input class='c_a' type='text' name='ot["+counter1+"]' id='person_phone"+counter1+"' />";
+  obj1.innerHTML = data1;
+  counter1++;
+  }
+ </script>
 			
 </head>
 
 <body>
 <div id="container">
-	    <div id="nav">
-    	<ul class="sf-menu dropdown">
-        	
-        	<li><a href="index.php">Home</a></li>
-            <li ><a class="has_submenu" href="site.php">Sites</a>
-            <ul>
-                	<li><a href="siteassgn.php">Assign To</a></li>
-                </ul>
-            </li>
-            <li ><a class="has_submenu" href="site.php">AMC</a>
-            	<ul>
-                    <li><a href="amcreport.php">Amc Details</a></li>
-                </ul>
-
-            </li>
-            
-
-            <li class="selected"><a class="has_submenu" href="clients.php">Clients</a>
-            	<ul>
-                	<li><a href="addclients.php">Add Clients</a></li>
-                    
-                    </ul>
-            
-            </li>
-            <li><a class="has_submenu" href="employee.php">Employees</a>
-            		<ul>
-                	<li><a href="addepm.php">Add Employee</a></li>
-                    <li><a href="employee.php">Employee Details</a></li>
-                    </ul>
-            
-            </li>
-            <li><a href="invoice.php">Invoice</a></li>
-            <li><a class="has_submenu" href="quotation.php">Quotation</a>
-            		<ul>
-                	<li><a href="quotationI.php">Quotation I</a></li>
-                    <li><a href="quotationII.php">Quotation II</a></li>
-                    </ul>
-            </li>
-            
-       
-        </ul>
-    </div>
+    <?php
+		include("header.php");
+	?>
     
     <div id="sub-header">
     <div class="quo">
@@ -134,11 +137,19 @@ if(isset($_REQUEST['can']))
         <td class="l_form" align="left">H2O PIPE SIZE</td><td><input type="checkbox" name="c5" value="Yes"/></td><td><input type="text" class="c_in" name="r5" /></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">TANK SIZE UT</td><td><input type="checkbox" name="c6" value="Yes"/></td><td><input type="text" class="c_in" name="r6"/></td>
+        <td class="l_form" align="left">TANK SIZE UT<span style="color:#00f;font-size:20px;font-weight:bold;cursor:pointer;" onClick="add_phone_field()">[+]</span>
+</td><td><input type="checkbox" name="c6" value="Yes"/></td><td><input type="text" class="c_in" name="ut[]" id="0"/></td>
+        </tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td><div id="phone">
+    	</div></td>
         </tr>
         <tr>
-        <td class="l_form" align="left">TANK SIZE OT</td><td><input type="checkbox" name="c7" value="Yes"/></td><td><input type="text" class="c_in" name="r7"/></td>
+        <td class="l_form" align="left">TANK SIZE OT<span style="color:#00f;font-size:20px;font-weight:bold;cursor:pointer;" onClick="add_phone_field1()">[+]</span>
+</td><td><input type="checkbox" name="c7" value="Yes"/></td><td><input type="text" class="c_in" name="ot[]" id="0"/></td>
         </tr>
+ 		<tr><td>&nbsp;</td><td>&nbsp;</td><td><div id="phone1">
+    	</div></td>
+        </tr>     
         <tr>
         <td class="l_form" align="left">LOAD SHEDDING</td><td><input type="checkbox" name="c8" value="Yes"/></td><td><input type="text" class="c_in" name="r8"/></td>
         </tr>

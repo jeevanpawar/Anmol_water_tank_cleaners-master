@@ -11,6 +11,36 @@
 		header("location:clients.php");
 	}
 ?>
+<?php
+	
+	if(isset($_REQUEST['c_up']))
+	{	
+		$c=$_REQUEST['c_id2'];
+		$t1=$_POST['c_first'];
+		$t2=$_POST['c_last'];
+		$t3=$_POST['c_add'];
+		$t4=$_POST['c_city'];
+		$t5=$_POST['c_pin'];
+		$t6=$_POST['c_email'];
+		$t7=$_POST['c_ph'];
+		$t8=$_POST['c_mo'];
+		$t9=$_POST['c_date'];
+		$t10=$_POST['c_site'];
+		$t11=$_POST['c_comp'];
+		
+		$qry_up="update clients SET c_date='".$t9."', c_first='".$t1."', c_last='".$t2."', c_add='".$t3."', c_city='".$t4."', c_pin='".$t5."', c_ph='".$t6."', c_mo='".$t7."', c_email='".$t8."', c_site='".$t10."', c_comp='".$t11."' where c_id=".$c;
+		$res_up=mysql_query($qry_up);
+		if($res_up)
+		{
+			header("location:clients.php");
+		}
+		else
+		{
+			echo "error";
+		}
+	}
+
+?>
 <html>
 <head>
 <title>Anmol Water Tank Cleaners</title>
@@ -20,55 +50,9 @@
 <body>
 <div id="container">
 	
-    <div id="nav">
-    	<ul class="sf-menu dropdown">
-        	
-        	<li><a href="home.php">Home</a></li>
-            <li><a class="has_submenu" href="site.php">Sites</a>
-            		<ul>
-                	<li><a href="siteassgn.php">Assign To</a></li>
-                </ul>
-            </li>
-            <li ><a href="amcreport.php">AMC</a>
-            </li>
-            
-            
-            <li class="selected"><a class="has_submenu" href="clients.php">Clients</a>
-            	<ul>
-                	<li><a href="addclients.php">Add Clients</a></li>
-                </ul>
-            
-            </li>
-            <li><a class="has_submenu" href="employee.php">Employees</a>
-            		<ul>
-                	<li><a href="addepm.php">Add Employee</a></li>
-                 
-                    </ul>
-            
-            </li>
-            <li><a href="payment.php">Payments</a>
-            		
-            </li>
-            <li><a class="has_submenu" href="invoicedetails.php">Invoice Details</a>
-            		<ul>
-                    <li><a href="addinvoice.php">Invoice Add</a></li>
-                	
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="quotation.php">Quotation</a>
-            		<ul>
-                    <li><a href="addquo.php">Quotation Add</a></li>
-                	
-                    </ul>
-            </li>
-            <li><a class="has_submenu" href="term.php">Terms & Conditions</a>
-            <ul>
-              	<li><a href="addterm.php">Add Terms</a></li>
-            </ul>
-           </li>
-       
-        </ul>
-    </div>
+    <?php
+	include("header.php");
+	?>
     
     <div id="sub-header">
     <div class="quo">
@@ -77,21 +61,23 @@
         <div>
         <form action="" method="post">
         <table class="q_clients">
-                <tr><td class="l_form">First Name:</td><td><input class="q_in" type="text" value="<?php echo $c_row[2]; ?>" /></td></tr>
-                <tr><td class="l_form">Last Name:</td><td><input class="q_in" type="text" value="<?php echo $c_row[3]; ?>"/></td></tr>
-                <tr><td class="l_form" valign="top">Address:</td><td><textarea class="q_add"><?php echo $c_row[4]; ?></textarea></td></tr>
-                <tr><td class="l_form">City:</td><td><input class="q_in" type="text" value="<?php echo $c_row[5]; ?>"/></td></tr>
-                <tr><td class="l_form">Pin Code:</td><td><input class="q_in" type="text" value="<?php echo $c_row[7]; ?>" /></td></tr>
-                <tr><td class="l_form">Email Id:</td><td><input class="q_in" type="text" value="<?php echo $c_row[10]; ?>"/></td></tr>
+                <tr><td class="l_form">First Name:</td><td><input class="q_in" type="text" name="c_first" value="<?php echo $c_row[2]; ?>" /></td></tr>
+                <tr><td class="l_form">Last Name:</td><td><input class="q_in" type="text" name="c_last" value="<?php echo $c_row[3]; ?>"/></td></tr>
+                <tr><td class="l_form">Company Name:</td><td><input class="q_in" type="text" name="c_comp" value="<?php echo $c_row[11]; ?>"/></td></tr>
+                <tr><td class="l_form">Address:</td><td><textarea class="q_add" name="c_add"><?php echo $c_row[4]; ?></textarea></td></tr>
+                <tr><td class="l_form">City:</td><td><input class="q_in" type="text" name="c_city" value="<?php echo $c_row[5]; ?>"/></td></tr>
+                <tr><td class="l_form">Pin Code:</td><td><input class="q_in" type="text" name="c_pin" value="<?php echo $c_row[7]; ?>" /></td></tr>
+                
                 </table>
                 <table class="q_clients2">
-                <tr><td class="l_form">Phone No:</td><td><input class="q_in" type="text" value="<?php echo $c_row[8]; ?>"/></td></tr>
-                <tr><td class="l_form">Mobile No:</td><td><input class="q_in" type="text" value="<?php echo $c_row[9]; ?>" /></td></tr>
-                <tr><td class="l_form">Date:</td><td><input class="q_in" type="text" name="c_state" value="<?php  echo date("d-m-Y"); ?>"/></td></tr>
+                <tr><td class="l_form">Email Id:</td><td><input class="q_in" type="text" name="c_email" value="<?php echo $c_row[9]; ?>"/></td></tr>
+                <tr><td class="l_form">Phone No:</td><td><input class="q_in" type="text" name="c_ph" value="<?php echo $c_row[8]; ?>"/></td></tr>
+                <tr><td class="l_form">Mobile No:</td><td><input class="q_in" type="text" name="c_mo" value="<?php echo $c_row[9]; ?>" /></td></tr>
+                <tr><td class="l_form">Date:</td><td><input class="q_in" type="text" name="c_date" value="<?php  echo $c_row[1]; ?>"/></td></tr>
                 <tr>
                 <td class="l_form">Site Type:</td>
                 <td>
-                <select class="a">
+                <select class="a" name="c_site">
                 <option>..Select..</option>
                 <option>Residential</option>
                 <option>Domestic</option>
@@ -102,44 +88,9 @@
                 </select>
                 </td>
                 </tr>
-                <tr><td class="l_form">OT:</td>
-                <td>
-                <select class="a">
-                <option>..Select..</option>
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                </select>
-                </td>
-                </tr>
-                <tr><td class="l_form">UT:</td>
-                <td>
-                <select class="a">
-                <option>..Select..</option>
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                </select>
-                </td>
                 </table>
         <div class="addclients_b">
-         <input name="c_up" class="formbutton" value=" Add " type="submit" />
+         <input name="c_up" class="formbutton" value=" Update " type="submit" />
          <input name="can" class="formbutton" value="Cancel" type="submit" />
         </div>
         
