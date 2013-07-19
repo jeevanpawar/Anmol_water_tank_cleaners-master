@@ -17,7 +17,7 @@ $page=$_GET['page'];
 ?>
 
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="80">Q No.</td>
         <td width="250">Client Name</td>
         <td width="160">Kind Attend</td>
@@ -29,7 +29,7 @@ $page=$_GET['page'];
         <?php
 		while($c_row=mysql_fetch_array($c_res_f))
 		{
-        echo "<tr class='emp_header'>";
+        echo "<tr class='pagi'>";
 		echo "<td>";
 		echo $c_row[0];
 		echo "</td>";

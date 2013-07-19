@@ -1,7 +1,6 @@
 <?php
 
 	include("include/database.php");
-	
 	$up_e = 0;
 	$up_e=$_REQUEST['e_id2'];
 	$up_qry="select * from emp where e_id=".$up_e;
@@ -38,18 +37,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Update Employee Details</center></div>
         <div>
         <form action="" method="post">
@@ -73,7 +72,7 @@
         
         </div>
         </table>
-        <div class="addemp_b">
+        <div class="addemp_button">
          <input name="e_up" class="formbutton" value=" Update " type="submit" />
          <input name="e_can" class="formbutton" value="Cancel" type="submit" />
         </div>

@@ -30,18 +30,18 @@ error_reporting(0);
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Add Terms & Conditions</center></div>
         <div>
         <?php

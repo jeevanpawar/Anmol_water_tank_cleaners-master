@@ -7,6 +7,8 @@
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 
 <script type="text/javascript">
 function confirmSubmit()
@@ -23,18 +25,16 @@ else
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Terms and Conditions</center></div>
         <div>
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="50">T.No.</td>
         <td>Terms & Conditions</td>
         <td width="100">Action</td>        
@@ -43,7 +43,7 @@ else
         <?php
 		while($e_row=mysql_fetch_array($e_res_f))
 		{
-        echo "<tr class='emp_header'>";
+        echo "<tr class='pagi'>";
         echo "<td width='50'>";
 		echo $e_row[0];
 		echo "</td>";

@@ -6,12 +6,24 @@ $rsd = mysql_query($sql);
 $count = mysql_num_rows($rsd);
 $pages = ceil($count/$per_page)
 ?>
+<?php
+if(isset($_REQUEST['go']))
+{
+	$t1=$_REQUEST['result'];
+	$qry="select * from invoice where i_id='$t1' or q_name='$t1' or q_mo='$t1'";
+	$res=mysql_query($qry);
+	$count=mysql_num_rows($res);
+}
+
+?>
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 <script type="text/javascript" src="js/jquery.min.js"></script>
 
 	<script type="text/javascript">
@@ -97,9 +109,12 @@ float: left;
 margin-right: 16px; 
 padding:5px;3 
 color:#FFF;
-margin-left:-10px;
+margin-left:2px;
 background-color:#00a1d2;
-
+box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -o-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);	
 }
 #pagination li:hover
 { 
@@ -116,16 +131,64 @@ cursor: pointer;
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    			
-                <div class="quo">
-                <br />
-                <div class="quotation"><center>Invoice Details</center></div>
+
+       <form action="" method="post">
+       	<table class="emp_tab">
+        <tr class="search_res">
+        <td class="info">Invoice Details</td>
+        <td width="305">
+        <input class="result" name="result" type="text">
+        <input class="go" name="go" type="submit" value="Search">
+        </td>
+        </tr>
+        </table>
+        </form>
+        <?php
+		if($count > '0')
+		{
+        if(isset($_REQUEST['go']))
+        {	
+		$row=mysql_fetch_array($res);
+		echo "<table class='emp_tab'>";
+		echo "<tr class='menu_header'>";
+       	echo "<td width='70'>In No.</td>";
+		echo "<td width='160'>Date</td>";
+		echo "<td width='250'>Client Name</td>";
+		echo "<td>Client Address</td>";
+		echo "<td width='70'>Update</td>";
+		echo "<td width='70'>Print</td>";
+       	echo "</tr>";
+		echo "<tr class='pagi'>";
+                echo "<td width='70'>";
+                echo $row[0];
+                echo "</td>";
+                echo "<td width='160'>";
+                echo $row[1];
+                echo "</td>";
+                echo "<td width='250'>";
+                echo $row[3];
+                echo "</td>";
+				echo "<td width='500'>";
+                echo $row[4];
+                echo "</td>";
+				echo "<td width='70' class='print'>";
+                echo "<a href='updateinv.php?id1=$row[0]'>Update</a>";
+                echo "</td>";
+				echo "<td width='70' class='print'>";
+                echo "<a href='report.php?id=$row[0]'>Print</a>";
+                echo "</td>";
+                echo "</tr>";
+
+		echo "</table>";
+		echo "<br>";
+		}
+		}
+?>
                 
                 <div>
                 

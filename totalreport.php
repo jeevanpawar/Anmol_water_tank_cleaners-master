@@ -1,31 +1,29 @@
 <?php
 	include("include/database.php");
-	
-	
 ?>
 <html>
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 
 
 </head>
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Total Income & Expense Report Of This Year</center></div>
         <div>
         
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td>Month</td>
         <td>Income</td>
         <td>Expense</td>
@@ -44,7 +42,7 @@
 		
 		$j=$row_ji[0]-$row_je[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>January</td>
         <td><?php echo $row_ji[0]; ?></td>
         <td><?php echo $row_je[0]; ?></td>
@@ -63,7 +61,7 @@
 		
 		$f=$row_fi[0]-$row_fe[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>February</td>
         <td><?php echo $row_fi[0]; ?></td>
         <td><?php echo $row_fe[0]; ?></td>
@@ -82,7 +80,7 @@
 		
 		$m=$row_mi[0]-$row_me[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>March</td>
         <td><?php echo $row_mi[0]; ?></td>
         <td><?php echo $row_me[0]; ?></td>
@@ -100,7 +98,7 @@
 		$row_ae=mysql_fetch_array($res_ae);
 		$a=$row_ai[0]-$row_ae[0];
 		?>
-        <tr class="emp_header">
+		<tr class="pagi">
         <td>April</td>
         <td><?php echo $row_ai[0]; ?></td>
         <td><?php echo $row_ae[0]; ?></td>
@@ -118,7 +116,7 @@
 		$row_mae=mysql_fetch_array($res_mae);
 		$ma=$row_mai[0]-$row_mae[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>May</td>
         <td><?php echo $row_mai[0]; ?></td>
         <td><?php echo $row_mae[0]; ?></td>
@@ -136,7 +134,7 @@
 		$row_je=mysql_fetch_array($res_je);
 		$ju=$row_ji[0]-$row_je[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>Jun</td>
         <td><?php echo $row_ji[0]; ?></td>
         <td><?php echo $row_je[0]; ?></td>
@@ -154,7 +152,7 @@
 		$row_jue=mysql_fetch_array($res_jue);
 		$jue=$row_jui[0]-$row_jue[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>July</td>
         <td><?php echo $row_jui[0]; ?></td>
         <td><?php echo $row_jue[0]; ?></td>
@@ -172,7 +170,7 @@
 		$row_aue=mysql_fetch_array($res_aue);
 		$aue=$row_aui[0]-$row_aue[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>August</td>
         <td><?php echo $row_aui[0]; ?></td>
         <td><?php echo $row_aue[0]; ?></td>
@@ -190,7 +188,7 @@
 		$row_se=mysql_fetch_array($res_se);
 		$s=$row_si[0]-$row_se[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>September</td>
         <td><?php echo $row_si[0]; ?></td>
         <td><?php echo $row_se[0]; ?></td>
@@ -208,7 +206,7 @@
 		$row_oe=mysql_fetch_array($res_oe);
 		$o=$row_oi[0]-$row_oe[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>Octomber</td>
         <td><?php echo $row_oi[0]; ?></td>
         <td><?php echo $row_oe[0]; ?></td>
@@ -226,7 +224,7 @@
 		$row_ne=mysql_fetch_array($res_ne);
 		$n=$row_ni[0]-$row_ne[0];
 		?>
-        <tr class="emp_header">
+        <tr class="pagi">
         <td>November</td>
        <td><?php echo $row_ni[0]; ?></td>
         <td><?php echo $row_ne[0]; ?></td>
@@ -244,7 +242,7 @@
 		$row_de=mysql_fetch_array($res_de);
 		$d=$row_di[0]-$row_de[0];
 		?>
-         <tr class="emp_header">
+        <tr class="pagi">
         <td>December</td>
         <td><?php echo $row_di[0]; ?></td>
         <td><?php echo $row_de[0]; ?></td>

@@ -62,6 +62,8 @@
 
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
@@ -184,7 +186,7 @@
         <br>
                 <table>
         
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td>
         <input class="formbutton" name="add" type="submit" value="Add">
         </td>

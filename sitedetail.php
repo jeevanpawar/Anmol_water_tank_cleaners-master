@@ -13,6 +13,8 @@ $pages = ceil($count/$per_page)
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 			
 <script type="text/javascript" src="js/jquery.min.js"></script>
 
@@ -115,17 +117,16 @@ cursor: pointer;
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
-	?>    
-    <div id="sub-header">
-	<div class="quo">
-    <br />
+	?>
+<br />
 	<div class="quotation"><center>Sites Details</center></div>
     <div>
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="150">Date</td>
         <td width="300">Emp Assign</td>
         <td>Site Address</td>

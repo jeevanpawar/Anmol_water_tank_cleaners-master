@@ -45,22 +45,22 @@
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Update Client Details</center></div>
         <div>
         <form action="" method="post">
-        <table class="q_clients">
+        <table class="tab_1">
                 <tr><td class="l_form">First Name:</td><td><input class="q_in" type="text" name="c_first" value="<?php echo $c_row[2]; ?>" /></td></tr>
                 <tr><td class="l_form">Last Name:</td><td><input class="q_in" type="text" name="c_last" value="<?php echo $c_row[3]; ?>"/></td></tr>
                 <tr><td class="l_form">Company Name:</td><td><input class="q_in" type="text" name="c_comp" value="<?php echo $c_row[11]; ?>"/></td></tr>
@@ -69,7 +69,7 @@
                 <tr><td class="l_form">Pin Code:</td><td><input class="q_in" type="text" name="c_pin" value="<?php echo $c_row[7]; ?>" /></td></tr>
                 
                 </table>
-                <table class="q_clients2">
+                <table class="tab_2">
                 <tr><td class="l_form">Email Id:</td><td><input class="q_in" type="text" name="c_email" value="<?php echo $c_row[9]; ?>"/></td></tr>
                 <tr><td class="l_form">Phone No:</td><td><input class="q_in" type="text" name="c_ph" value="<?php echo $c_row[8]; ?>"/></td></tr>
                 <tr><td class="l_form">Mobile No:</td><td><input class="q_in" type="text" name="c_mo" value="<?php echo $c_row[9]; ?>" /></td></tr>
@@ -89,7 +89,7 @@
                 </td>
                 </tr>
                 </table>
-        <div class="addclients_b">
+        <div class="add_h">
          <input name="c_up" class="formbutton" value=" Update " type="submit" />
          <input name="can" class="formbutton" value="Cancel" type="submit" />
         </div>

@@ -17,7 +17,7 @@
 		$pa_res=mysql_query($pa_qry);
 		if($pa_res)
 		{
-			header("location:payment.php");
+			header("location:montlyexpense.php");
 		}
 		else
 		{
@@ -35,6 +35,8 @@
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 <script type="text/javascript" language="javascript">
 function validateMyForm ( ) { 
     var isValid = true;
@@ -51,14 +53,12 @@ function validateMyForm ( ) {
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Expense Details</center></div>
         <div>
         <form name="form1" action="" method="post">

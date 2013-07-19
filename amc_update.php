@@ -33,18 +33,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Reminder Update</center></div>
         <div>
         <form action="" method="post">

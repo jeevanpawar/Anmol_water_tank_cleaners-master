@@ -2,6 +2,8 @@
 <head>
 <title>Anmol Water Tank Cleners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 <link rel="stylesheet" href="css/myStyle.css" type="text/css">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript">
@@ -213,20 +215,19 @@ $('.info8').fadeIn(200);
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    <div id="sub-header">
-		<div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Monthwise Income Reports </center></div>
     <div class="mybody">
 
     <div class="page">
 			<div class="menu">
 			<table class="menuTable">
-            <tr>
+            <tr class="menu_header">
             <td id="link">Jan</td>
             <td id="link2">Feb</td>
             <td id="link3">March</td>
@@ -244,7 +245,7 @@ $('.info8').fadeIn(200);
 			</div>
 			<div class="home2">
 		    <table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income In</td>
         	<td>Payment Mode</td>
@@ -274,7 +275,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_f=mysql_fetch_array($res_f))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_f[6]));
 				echo "</td>";
@@ -299,7 +300,7 @@ $('.info8').fadeIn(200);
             </div>
 			<div class="home3">
             <table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -325,7 +326,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_ma=mysql_fetch_array($res_ma))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_ma[6]));
 				echo "</td>";
@@ -353,7 +354,7 @@ $('.info8').fadeIn(200);
             </div>
 			<div class="home4">
             <table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -379,7 +380,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_ap=mysql_fetch_array($res_ap))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_ap[6]));
 				echo "</td>";
@@ -408,7 +409,7 @@ $('.info8').fadeIn(200);
             </div>
 			<div class="info">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -434,7 +435,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_j=mysql_fetch_array($res_j))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_j[6]));
 				echo "</td>";
@@ -463,7 +464,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info1">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -489,7 +490,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_m=mysql_fetch_array($res_m))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_m[6]));
 				echo "</td>";
@@ -518,7 +519,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info2">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -544,7 +545,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_ju=mysql_fetch_array($res_ju))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_ju[6]));
 				echo "</td>";
@@ -573,7 +574,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info3">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -599,7 +600,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_jl=mysql_fetch_array($res_jl))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_jl[6]));
 				echo "</td>";
@@ -628,7 +629,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info4">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -654,7 +655,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_au=mysql_fetch_array($res_au))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_au[6]));
 				echo "</td>";
@@ -683,7 +684,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info5">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -709,7 +710,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_se=mysql_fetch_array($res_se))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_se[6]));
 				echo "</td>";
@@ -738,7 +739,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info6">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -764,7 +765,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_o=mysql_fetch_array($res_o))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_o[6]));
 				echo "</td>";
@@ -793,7 +794,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info7">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -819,7 +820,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_n=mysql_fetch_array($res_n))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_n[6]));
 				echo "</td>";
@@ -848,7 +849,7 @@ $('.info8').fadeIn(200);
 			</div>
             <div class="info8">
 			<table class="emp_month">
-        	<tr class="emp_header">
+        	<tr class="menu_header">
         	<td width="150">Date</td>
         	<td width="350">Income Details</td>
         	<td>Payment Mode</td>
@@ -874,7 +875,7 @@ $('.info8').fadeIn(200);
         	<?php
 				while($row_d=mysql_fetch_array($res_d))
 				{
-				echo"<tr class='emp_header'>";
+				echo "<tr class='pagi'>";
 				echo "<td>";
 				echo date('d-m-Y', strtotime($row_d[6]));
 				echo "</td>";

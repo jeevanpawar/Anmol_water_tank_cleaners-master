@@ -78,6 +78,8 @@ if(isset($_REQUEST['can']))
 <head>
 <title>Anmol Water Tank Cleners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 <script>
  var counter = 1;
  function add_phone_field()
@@ -106,18 +108,17 @@ if(isset($_REQUEST['can']))
 
 <body>
 <div id="container">
-    <?php
-		include("header.php");
-	?>
-    
     <div id="sub-header">
-    <div class="quo">
-    	<br />
+	
+    <?php
+	include("header.php");
+	?>
+<br />
 		<div class="quotation"><center>Checklist</center></div>
         <div>
         <form action="" method="post">
         <table class="checklist">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="250">&nbsp;</td><td width="60">Yes</td><td>Remarks</td>
         </tr>
         <tr><td></td></tr>

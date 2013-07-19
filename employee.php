@@ -24,6 +24,8 @@ error_reporting(0);
 <html>
 <head><title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 <script type="text/javascript">
 function confirmSubmit()
 {
@@ -39,18 +41,16 @@ else
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Employee Details</center></div>
         <div>
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="250">Emp. Name</td>
         <td width="160">Contact No.</td>
         <td>Address</td>
@@ -60,7 +60,7 @@ else
         <?php
 		while($e_row=mysql_fetch_array($e_res_f))
 		{
-        echo "<tr class='emp_header'>";
+        echo "<tr class='pagi'>";
         echo "<td width='250'>";
 		echo $e_row[1];
 		echo "</td>";

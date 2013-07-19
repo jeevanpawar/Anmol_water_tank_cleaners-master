@@ -33,17 +33,17 @@ $page=$_GET['page'];
 ?>
 
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="250">Client Name</td>
         <td width="160">Contact No.</td>
-        <td>Site Address</td>
+        <td>Client Address</td>
         <td width="100">Action</td>
         </tr>
 
         <?php
 		while($c_row=mysql_fetch_array($c_res_f))
 		{
-        echo "<tr class='emp_header'>";
+        echo "<tr class='pagi'>";
         echo "<td width='250'>";
 		echo $c_row[2]; echo "&nbsp;"; echo $c_row[3];
 		echo "</td>";

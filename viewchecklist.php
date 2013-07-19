@@ -23,6 +23,8 @@
 <head>
 <title>Anmol Water Tank Cleners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
@@ -34,7 +36,7 @@
         <div>
         <form action="" method="post">
         <table class="checklist">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="250">&nbsp;</td><td width="60">Yes</td><td>Remarks</td>
         </tr>
         <tr><td></td></tr>

@@ -53,7 +53,7 @@
                 	
                     </ul>
             </li>
-            <li><a class="has_submenu" href="term.php">Terms & Conditions</a>
+            <li><a class="has_submenu" href="term.php">T & C</a>
             <ul>
               	<li><a href="addterm.php">Add Terms</a></li>
             </ul>

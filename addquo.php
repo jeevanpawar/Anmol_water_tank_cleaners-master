@@ -7,11 +7,23 @@ $count = mysql_num_rows($rsd);
 $pages = ceil($count/$per_page)
 
 ?>
+<?php
+if(isset($_REQUEST['go']))
+{
+	$t1=$_REQUEST['result'];
+	$qry="select * from clients where c_first='$t1' or c_mo='$t1' or c_comp='$t1' or c_email='$t1'";
+	$res=mysql_query($qry);
+	$count=mysql_num_rows($res);
+}
+
+?>
 
 <html>
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -97,9 +109,12 @@ float: left;
 margin-right: 16px; 
 padding:5px;3 
 color:#FFF;
-margin-left:-10px;
+margin-left:2px;
 background-color:#00a1d2;
-
+box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -o-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);	
 }
 #pagination li:hover
 { 
@@ -116,16 +131,55 @@ cursor: pointer;
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    			
-                <div class="quo">
-                <br />
-                <div class="quotation"><center>Quotation Detail</center></div>
+	 <form action="" method="post">
+       	<table class="emp_tab">
+        <tr class="search_res">
+        <td class="info">Quotation Details</td>
+        <td width="305">
+        <input class="result" name="result" type="text">
+        <input class="go" name="go" type="submit" value="Search">
+        </td>
+        </tr>
+        </table>
+        </form>
+                <?php
+		if($count > '0')
+		{
+        if(isset($_REQUEST['go']))
+        {	
+		$c_row=mysql_fetch_array($res);
+		echo "<table class='emp_tab'>";
+		echo "<tr class='menu_header'>";
+       	echo "<td width='250'>Client Name</td>";
+		echo "<td width='150'>Contact No</td>";
+       	echo "<td>Client Address</td>";
+		echo "<td width='100'>Action</td>";
+       	echo "</tr>";
+        echo "<tr class='pagi'>";
+        echo "<td width='250'>";
+		echo $c_row[2]; echo "&nbsp;"; echo $c_row[3];
+		echo "</td>";
+        echo "<td width='160'>";
+		echo $c_row[8];
+		echo "</td>";
+		echo "<td>";
+		echo $c_row[4];
+		echo "</td>";
+        echo "<td width='100'class='print'>";
+		echo "<a href='quotationI.php?c_id2=$c_row[0]'>Create</a>";
+		echo "</td>";
+		echo "</tr>";
+		echo "<table>";
+		echo "<br>";
+		}
+		}
+		?>        
+        
                 
                 <div id="loading" ></div>
 		<div id="content" ></div>

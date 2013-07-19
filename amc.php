@@ -16,23 +16,24 @@
 
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
 <div id="container">
-	<?php
+    <div id="sub-header">
+	
+    <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-	<div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Clients AMC Details</center></div>
         <div>
         
 		<form action="" method="post">
-        <table>
-        <tr class="emp_header5">
+        <table class="emp_tab">
+        <tr class="menu_header">
         <td width="955">Description</td>
         <td width="150">Date</td>
         <td width="90">Update</td>
@@ -43,7 +44,7 @@
 		
 		while($row=mysql_fetch_array($c_res_f))
 		{
-			echo "<tr class='emp_header3' align='center'>";
+			echo "<tr class='pagi'>";
 			echo "<td>";
 			echo $row[3];
 			echo "</td>";

@@ -20,24 +20,23 @@
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Payment Details</center></div>
         <div>
         
         <table class="emp_tab">
-        
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="350">Payment Mode</td>
         <td width="400">Cheque No.</td>
         <td width="220">Pay Date</td>
@@ -47,7 +46,7 @@
         <?php
 		while($c_row=mysql_fetch_array($c_res_f))
 		{
-        echo "<tr class='emp_header'>";
+        echo "<tr class='pagi'>";
         echo "<td>";
 		echo $c_row[4];
 		echo "</td>";
@@ -81,16 +80,16 @@
         
         <div class="quotation"><center>Balance Details</center></div>
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td>Invoice No:</td><td><?php echo $c_row[1]; ?></td>
         <td>Invoice Total:</td><td><?php echo $c_row[7]; ?></td>
         </tr>
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td>Client Name:</td><td><?php echo $c_row[3]; ?></td>
         
         <td>Paid By Client:</td><td><?php echo $to_row[0]; ?></td>
         </tr>
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td>Address</td><td><?php echo $row_i[4]; ?></td>
         <td>Balance:</td><td><?php echo $c; ?></td>
         </tr>

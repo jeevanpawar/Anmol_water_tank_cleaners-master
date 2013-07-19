@@ -15,22 +15,22 @@
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 </head>
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Client Details</center></div>
         <div>
         <form action="" method="post">
-        <table class="q_clients">
+        <table class="tab_1">
                 <tr><td class="l_form">First Name:</td><td><label><?php echo $c_row[2]; ?></label></td></tr>
                 <tr><td class="l_form">Last Name:</td><td><label><?php echo $c_row[3]; ?></label></td></tr>
                 <tr><td class="l_form" valign="top">Address:</td><td><label><?php echo $c_row[4]; ?></label></td></tr>
@@ -38,7 +38,7 @@
                 <tr><td class="l_form">Pin Code:</td><td><label><?php echo $c_row[6]; ?></label></td></tr>
                 <tr><td class="l_form">Company Name:</td><td><label><?php echo $c_row[11]; ?></label></td></tr>
                 </table>
-                <table class="q_clients2">
+                <table class="tab_2">
                 <tr><td class="l_form">Email Id:</td><td><label><?php echo $c_row[9]; ?></label></td></tr>
                 <tr><td class="l_form">Phone No:</td><td><label><?php echo $c_row[7]; ?></label></td></tr>
                 <tr><td class="l_form">Mobile No:</td><td><label><?php echo $c_row[8]; ?></label></td></tr>
@@ -50,9 +50,6 @@
                 
                 
                 </table>
-        <div class="upclients_b">
-         <input name="can" class="formbutton" value="Cancel" type="submit" />
-        </div>
         
         </form>
     </div>

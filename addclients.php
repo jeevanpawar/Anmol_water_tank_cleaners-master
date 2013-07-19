@@ -36,6 +36,8 @@ include("include/database.php");
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 	
             
 
@@ -59,18 +61,16 @@ function validateMyForm ( ) {
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Add New Clients</center></div>
         <div>
         <form name="form1" action="" method="post">
-        <table class="q_clients">
+        <table class="tab_1">
                 <tr><td class="l_form">First Name:</td><td><input id="fname" class="q_in" type="text" name="c_fname" /></td></tr>
                 <tr><td class="l_form">Last Name:</td><td><input id="lname" class="q_in" type="text" name="c_lname"/></td></tr>
                 <tr><td class="l_form">Company Name:</td><td><input id="lname" class="q_in" type="text" name="c_comp"/></td></tr>
@@ -79,7 +79,7 @@ function validateMyForm ( ) {
 				<tr><td class="l_form">Pin Code:</td><td><input class="q_in" type="text" name="c_pin"/></td></tr>
                 
                 </table>
-                <table class="q_clients2">
+                <table class="tab_2">
                 <tr><td class="l_form">Email Id:</td><td><input class="q_in" type="text" name="c_email"/></td></tr>
                 <tr><td class="l_form">Phone No:</td><td><input id="ph" class="q_in" type="text" name="c_ph"/></td></tr>
                 <tr><td class="l_form">Mobile No:</td><td><input id="mo" class="q_in" type="text" name="c_mo"/></td></tr>
@@ -101,7 +101,7 @@ function validateMyForm ( ) {
                 </tr>
                 
                 </table>
-        <div class="addclients_b">
+        <div class="add_h">
          <input name="c_add" class="formbutton" value=" Add " type="submit" onClick="javascript:return validateMyForm();" />
          <input name="can" class="formbutton" value="Cancel" type="submit" />
         </div>

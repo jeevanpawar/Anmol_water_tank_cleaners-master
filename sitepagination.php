@@ -29,7 +29,7 @@ $rsd = mysql_query($sql);
 ?>
 
 	<table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="50">In No.</td>
         <td colspan="5">Emp Name</td>
         <td width="250">Client Name</td>
@@ -40,7 +40,7 @@ $rsd = mysql_query($sql);
 		
 		while($row=mysql_fetch_array($rsd))
 		{		
-        	echo"<tr class='emp_header'>";
+        	echo "<tr class='pagi'>";
 			echo"<td>";
 			echo $row[8];
 			echo"</td>";

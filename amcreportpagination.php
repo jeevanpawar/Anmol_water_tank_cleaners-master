@@ -17,7 +17,7 @@
 	$c_res_f=mysql_query($c_qry_f);
 ?>
         <table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="70">In. No</td>
         <td width="100">Start Date.</td>
         <td width="250">Client Name</td>
@@ -28,7 +28,7 @@
         <?php
 		while($c_row=mysql_fetch_array($c_res_f))
 		{
-        echo "<tr class='emp_header'>";
+        echo "<tr class='pagi'>";
         echo "<td>";
 		echo $c_row[0];
 		echo "</td>";

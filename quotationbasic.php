@@ -49,6 +49,8 @@ if(isset($_REQUEST['cancel']))
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 
 <script>
  var counter = 1;
@@ -56,7 +58,7 @@ if(isset($_REQUEST['cancel']))
  {
   var obj = document.getElementById("phone");
   var data = obj.innerHTML;
-  data += "<table class='des'><tr><td><input class='des_in' type='text' name='d["+counter+"]' id='person_phone"+counter+"' /></td><td><input class='des_cap' type='text' name='c["+counter+"]' id='person_phone"+counter+"' /></td><td><input class='des_q' type='text' name='q["+counter+"]' id='person_phone"+counter+"' /></td><td><input class='des_r' type='text' name='r["+counter+"]' id='person_phone"+counter+"' /></td><td><input class='des_ser' type='text' name='s["+counter+"]' id='person_phone"+counter+"' /></td></tr></table>";
+ data += "<table class='des'><tr><td><input class='des_in' type='text' name='d["+counter+"]' id='person_phone"+counter+"' /></td><td width='10%'><input class='des_cap' type='text' name='c["+counter+"]' id='person_phone"+counter+"' /></td><td width='10%'><input class='des_q' type='text' name='q["+counter+"]' id='person_phone"+counter+"' /></td><td width='10%'><input class='des_r' type='text' name='r["+counter+"]' id='person_phone"+counter+"' /></td><td width='10%'><input class='des_ser' type='text' name='s["+counter+"]' id='person_phone"+counter+"' /></td></tr></table>";
   obj.innerHTML = data;
   counter++;
   }
@@ -97,14 +99,14 @@ if(isset($_REQUEST['cancel']))
                 </table>
                 <br />
                 <table class="des">
-                <tr>
-                <td class="heading">Description</td>
-                <td class="heading">Capacity</td>
-                <td class="heading" >Quantity</td>
-                <td class="heading">Rate</td>
-                <td class="heading">Service in Year</td>
+                <tr class="menu_header">
+                <td>Description</td>
+                <td width="10%">Capacity</td>
+                <td width="10%">Quantity</td>
+                <td width="10%">Rate</td>
+                <td width="10%">AMC</td>
                 </tr>
-                <span style="color:#00f;font-size:20px;font-weight:bold;cursor:pointer;" onClick="add_phone_field()">[+]</span>
+                <span style=" margin-left:100px;color:#00f;font-size:20px;font-weight:bold;cursor:pointer;" onClick="add_phone_field()">[+]</span>
                 <tr>
                 <td>
                  <input class="des_in" type="text" name="d[]" id="0"><br>
@@ -116,10 +118,10 @@ if(isset($_REQUEST['cancel']))
                  <input class="des_q" type="text" name="q[]" id="0"><br>
                 </td>
                 <td>
-                 <input class="des_r" type="text" name="r[]" id="0"><br>
+                 <input class="des_q" type="text" name="r[]" id="0"><br>
                 </td>
                 <td>
-                 <input class="des_ser" type="text" name="s[]" id="0"><br>
+                 <input class="des_q" type="text" name="s[]" id="0"><br>
                 </td>
                 
                 </tr>

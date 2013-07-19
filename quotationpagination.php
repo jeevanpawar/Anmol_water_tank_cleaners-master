@@ -10,7 +10,7 @@ $sql = "select * from quotation order by q_id desc limit $start,$per_page";
 $rsd = mysql_query($sql);
 ?>
 		<table class="emp_tab">
-        <tr class="emp_header">
+        <tr class="menu_header">
         <td width="80">Quo No</td>
         <td width="250">Client Name</td>
         <td width="160">Date</td>
@@ -21,7 +21,7 @@ $rsd = mysql_query($sql);
         <?php
 		while($row=mysql_fetch_array($rsd))
 		{		
-        		echo "<tr class='emp_header'>";
+        		echo "<tr class='pagi'>";
                 echo "<td width='80'>";
                 echo $row[0];
                 echo "</td>";

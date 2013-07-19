@@ -18,19 +18,19 @@ $rsd = mysql_query($sql);
 ?>
 
 				<table class="emp_tab">
-                <tr class="emp_header">
+                <tr class="menu_header">
                 <td width="80">In. No</td>
                 <td width="250">Client Name</td>
                 <td width="160">Date</td>
                 <td>Site Address</td>
-                <td width="70">Print</td>
+                <td width="70">Assign To</td>
                 </tr>
                 
         <?php
 		
 		while($row=mysql_fetch_array($rsd))
 		{		
-        	echo "<tr class='emp_header'>";
+        	echo "<tr class='pagi'>";
                 echo "<td width='70'>";
                 echo $row[0];
                 echo "</td>";

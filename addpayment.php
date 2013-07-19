@@ -62,6 +62,8 @@
 <head>
 <title>Anmol Water Tank Cleaners</title>
 <link rel="stylesheet" href="styles.css" type="text/css" />
+<link rel="stylesheet" href="styles2.css" type="text/css" />
+
 <script type="text/javascript" language="javascript">
 function validateMyForm ( ) { 
     var isValid = true;
@@ -78,21 +80,19 @@ function validateMyForm ( ) {
 
 <body>
 <div id="container">
+    <div id="sub-header">
 	
     <?php
 	include("header.php");
 	?>
-    
-    <div id="sub-header">
-    <div class="quo">
-    	<br />
+<br />
 		<div class="quotation"><center>Payments Details</center></div>
         <div>
         <form name="form1" action="" method="post">
         <table class="addemp_tab">
         <tr>
         <td class="l_form">Invoice No:</td>
-        <td><input id="des" type="text" class="q_in" name="t1" value="<?php echo $p_row[0]; ?>"></td>
+        <td><input id="des" readonly type="text" class="q_in" name="t1" value="<?php echo $p_row[0]; ?>"></td>
         </tr>
         <tr>
         <td class="l_form">Clients Name:</td>
