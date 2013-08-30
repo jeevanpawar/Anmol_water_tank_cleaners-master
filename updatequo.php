@@ -25,7 +25,7 @@ if(isset($_REQUEST['submit']))
 	$u2=$_POST['q_name'];
 	$u3=$_POST['q_address'];
 	$u4=$_POST['q_attn'];
-	$u5=$_POST['q_mo'];
+	$u5=$_POST['q_mob1'];
 	
 	$qry_up="update quotation SET q_date='".$u1."', q_name='".$u2."', q_address='".$u3."', q_attn='".$u4."', q_mo='".$u5."' where q_id=".$in;
 	$res_up=mysql_query($qry_up);
@@ -103,15 +103,20 @@ if(isset($_REQUEST['cancel']))
                 <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[3]; ?>">
 				</td>
                 </tr>
+                
                 <tr><td class="l_form">Address:</td><td><textarea class="q_add" name="q_address"><?php echo $c_row[4]; ?></textarea></td></tr>
                 </table>
                 <table class="q_info4">
                 <tr><td class="l_form">Quotation No</td>
                 <td><input class="q_in" readonly type="text" value="<?php echo $c_row[0]; ?>"/></td></tr>
-                <tr><td class="l_form">Kind Attn:</td>
-                <td><input name="q_attn" class="q_in" type="text" value="<?php echo $c_row[5]; ?>"/></td>
-                </tr>
-                <tr><td class="l_form">Mo No:</td><td><input name="q_mo" class="q_in" type="text" value="<?php echo $c_row[6]; ?>"/></td>
+               
+                <tr><td class="l_form">Kind Attn:</td><td><input name="q_attn" class="q_in" type="text" value="<?php echo $c_row[5]; ?>"/></td>
+                
+                
+                 <tr><td class="l_form">Mob No:</td><td><input name="q_mob1" class="q_in" type="text" value="<?php echo $c_row[6]; ?>"/></td>
+                      
+                 <tr><td class="l_form"></td><td></td></tr>
+                                                                
                 </table>
                 <br />
                 <table class="des">

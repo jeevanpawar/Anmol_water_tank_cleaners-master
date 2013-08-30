@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 13, 2013 at 07:21 AM
+-- Generation Time: Aug 14, 2013 at 08:58 AM
 -- Server version: 5.5.24-log
 -- PHP Version: 5.3.13
 
@@ -82,8 +82,9 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `c_email` varchar(25) NOT NULL,
   `c_site` varchar(25) NOT NULL,
   `c_comp` varchar(100) NOT NULL,
+  `c_mo2` bigint(11) NOT NULL,
   PRIMARY KEY (`c_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -98,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `emp` (
   `e_contact` bigint(11) NOT NULL,
   `e_desig` varchar(11) NOT NULL,
   PRIMARY KEY (`e_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 -- --------------------------------------------------------
 
@@ -126,13 +127,18 @@ CREATE TABLE IF NOT EXISTS `invoice` (
   `i_id` int(11) NOT NULL AUTO_INCREMENT,
   `q_date` varchar(25) NOT NULL,
   `c_id` int(11) NOT NULL,
-  `q_name` varchar(25) NOT NULL,
-  `q_address` varchar(100) NOT NULL,
-  `q_attn` varchar(25) NOT NULL,
+  `q_name` varchar(100) NOT NULL,
+  `q_address` text NOT NULL,
+  `q_attn` varchar(100) NOT NULL,
   `q_mo` bigint(11) NOT NULL,
   `po_wo` int(11) NOT NULL,
+  `q_name1` varchar(100) NOT NULL,
+  `c_name` varchar(100) NOT NULL,
+  `q_mo1` bigint(11) NOT NULL,
+  `ph` bigint(11) NOT NULL,
+  `assign` int(10) NOT NULL,
   PRIMARY KEY (`i_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
 -- --------------------------------------------------------
 
@@ -145,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `ot` (
   `c_id` int(11) NOT NULL,
   `ot` varchar(100) NOT NULL,
   PRIMARY KEY (`o_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -164,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `partial_payment` (
   `i_amt` double NOT NULL,
   `p_amt` double NOT NULL,
   PRIMARY KEY (`p_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -180,8 +186,12 @@ CREATE TABLE IF NOT EXISTS `quotation` (
   `q_address` varchar(100) NOT NULL,
   `q_attn` varchar(100) NOT NULL,
   `q_mo` bigint(11) NOT NULL,
+  `q_name2` varchar(200) NOT NULL,
+  `q_mob2` bigint(11) NOT NULL,
+  `c_name` varchar(150) NOT NULL,
+  `ph` bigint(11) NOT NULL,
   PRIMARY KEY (`q_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -197,8 +207,9 @@ CREATE TABLE IF NOT EXISTS `reciept` (
   `r_des` text NOT NULL,
   `r_date` date NOT NULL,
   `r_address` text NOT NULL,
+  `re_date` date NOT NULL,
   PRIMARY KEY (`r_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 -- --------------------------------------------------------
 
@@ -213,8 +224,14 @@ CREATE TABLE IF NOT EXISTS `reminder` (
   `r_des` varchar(100) NOT NULL,
   `r_date` date NOT NULL,
   `r_r` varchar(11) NOT NULL,
+  `r_name2` varchar(200) NOT NULL,
+  `r_comp` varchar(200) NOT NULL,
+  `r_mo` bigint(11) NOT NULL,
+  `r_mo2` bigint(11) NOT NULL,
+  `r_ph` bigint(11) NOT NULL,
+  `r_count` int(11) NOT NULL,
   PRIMARY KEY (`r_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=291 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=278 ;
 
 -- --------------------------------------------------------
 
@@ -225,15 +242,18 @@ CREATE TABLE IF NOT EXISTS `reminder` (
 CREATE TABLE IF NOT EXISTS `site` (
   `s_id` int(11) NOT NULL AUTO_INCREMENT,
   `s_date` varchar(25) NOT NULL,
-  `e1` varchar(25) NOT NULL,
-  `e2` varchar(25) NOT NULL,
-  `e3` varchar(25) NOT NULL,
-  `e4` varchar(25) NOT NULL,
-  `e5` varchar(25) NOT NULL,
+  `e1` varchar(100) NOT NULL,
+  `e2` varchar(100) NOT NULL,
+  `e3` varchar(100) NOT NULL,
+  `e4` varchar(100) NOT NULL,
+  `e5` varchar(100) NOT NULL,
   `s_add` varchar(100) NOT NULL,
   `i_id` int(25) NOT NULL,
+  `s_add2` varchar(100) NOT NULL,
+  `c_name` varchar(100) NOT NULL,
+  `cnt` int(10) NOT NULL,
   PRIMARY KEY (`s_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
@@ -251,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `sub_invoice` (
   `service` int(25) NOT NULL,
   `total` double NOT NULL,
   PRIMARY KEY (`s_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=107 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=124 ;
 
 -- --------------------------------------------------------
 
@@ -269,7 +289,7 @@ CREATE TABLE IF NOT EXISTS `sub_quotation` (
   `service` int(11) NOT NULL,
   `total` double NOT NULL,
   PRIMARY KEY (`s_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=89 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -281,7 +301,7 @@ CREATE TABLE IF NOT EXISTS `terms` (
   `t_id` int(11) NOT NULL AUTO_INCREMENT,
   `t_term` varchar(200) NOT NULL,
   PRIMARY KEY (`t_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -296,6 +316,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`u_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`u_id`, `u_name`, `u_pass`) VALUES
+(1, 'anmol', 'admin123');
+
 -- --------------------------------------------------------
 
 --
@@ -307,7 +334,7 @@ CREATE TABLE IF NOT EXISTS `ut` (
   `c_id` int(11) NOT NULL,
   `ut` varchar(100) NOT NULL,
   PRIMARY KEY (`u_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

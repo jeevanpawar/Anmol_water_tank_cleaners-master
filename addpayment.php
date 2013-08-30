@@ -1,5 +1,4 @@
 <?php
-	
 	error_reporting(0);
 	include("include/database.php");
 	$p=$_REQUEST['p_id'];
@@ -95,8 +94,14 @@ function validateMyForm ( ) {
         <td><input id="des" readonly type="text" class="q_in" name="t1" value="<?php echo $p_row[0]; ?>"></td>
         </tr>
         <tr>
-        <td class="l_form">Clients Name:</td>
-        <td><input id="ename" type="text" class="q_in" name="t2" value="<?php echo $p_row[3]; ?>"></td>
+        <td class="l_form">Kind Attn /<br>Company Name:</td>
+        <td>
+        <select class="a" name="t2">
+        <option><?php echo $p_row[3]; ?></option>
+        <option><?php echo $p_row[8]; ?></option>
+        <option><?php echo $p_row[9]; ?></option>
+        </select>
+        
         </tr>
         <tr>
         <td class="l_form">Payment Mode:</td>

@@ -6,7 +6,6 @@ $sql = "select * from clients";
 $rsd = mysql_query($sql);
 $count = mysql_num_rows($rsd);
 $pages = ceil($count/$per_page)
-
 ?>
 <?php
 if(isset($_REQUEST['go']))
@@ -18,7 +17,6 @@ if(isset($_REQUEST['go']))
 }
 
 ?>
-
 <html>
 <head>
 <title>Anmol Water Tank Cleaners</title>
@@ -129,15 +127,13 @@ cursor: pointer;
 
 
 </head>
-
 <body>
 <div id="container">
     <div id="sub-header">
-	
     <?php
 	include("header.php");
 	?>
- <form action="" method="post">
+    <form action="" method="post">
        	<table class="emp_tab">
         <tr class="search_res">
         <td class="info">Clients Details</td>
@@ -157,22 +153,37 @@ cursor: pointer;
 		$c_row=mysql_fetch_array($res);
 		echo "<table class='emp_tab'>";
 		echo "<tr class='menu_header'>";
-       	echo "<td width='250'>Client Name</td>";
-		echo "<td width='150'>Contact No</td>";
-       	echo "<td>Site Address</td>";
+       	echo "<td width='250'>Kind Attn I</td>";
+		echo "<td width='160'>Kind Attn I No.</td>";
+		echo "<td width='250'>Kind Attn II</td>";
+		echo "<td width='160'>Kind Attn II No.</td>";
+       	echo "<td width='250'>Company Name</td>";
+		echo "<td width='250'>Phone No</td>";
 		echo "<td width='100'>Checklist</td>";
 		echo "<td width='100'>Action</td>";
        	echo "</tr>";
 
         echo "<tr class='pagi'>";
         echo "<td width='250'>";
-		echo $c_row[2]; echo "&nbsp;"; echo $c_row[3];
+		echo $c_row[2];
 		echo "</td>";
         echo "<td width='160'>";
 		echo $c_row[8];
 		echo "</td>";
-		echo "<td>";
-		echo $c_row[4];
+		echo "<td width='250'>";
+		echo $c_row[3];
+		echo "</td>";
+		
+		echo "<td width='160'>";
+		echo $c_row[12];
+		echo "</td>";
+		echo "</td>";
+		echo "<td width='250'>";
+		echo $c_row[11];
+		echo "</td>";
+		echo "</td>";
+		echo "<td width='250'>";
+		echo $c_row[7];
 		echo "</td>";
 		echo "<td width='100' class='print'>";
 		echo "<a href='checklist.php?id_a=$c_row[0]'>Add</a>&nbsp;<a href='viewchecklist.php?id_v=$c_row[0]'>View</a>";

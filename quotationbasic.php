@@ -1,13 +1,14 @@
 <?php
 error_reporting(0);
 include("include/database.php");
-
 $in=$_REQUEST['i_id'];
-
 $c_query="select * from quotation where q_id=".$in;
 $c_res=mysql_query($c_query);
 $c_row=mysql_fetch_array($c_res);
 
+$qry1="select * from quotation where q_id=".$in;
+$res1=mysql_query($qry1);
+$row1=mysql_fetch_array($res1);
 ?>
 
 <?php
@@ -65,17 +66,11 @@ if(isset($_REQUEST['cancel']))
  </script>
   
 </head>
-
 <body>
 <div id="container">
-	
-    
-    <div id="sub-header">
-    			
-                <div class="quo">
-                
-                
-                <form name="form5" action="" method="post" enctype="multipart/form-data">
+   <div id="sub-header">
+               <div class="quo">
+ 				<form name="form5" action="" method="post" enctype="multipart/form-data">
                 <br />
                 
                 <div class="quotationI"><center>AMC QUOTATION</center></div>
@@ -83,9 +78,7 @@ if(isset($_REQUEST['cancel']))
                 <table class="q_info3">
                 <tr><td class="l_form">Date:</td><td><input name="q_date" class="q_in" type="text" value="<?php  echo date("d-m-Y"); ?>"/></td></tr>
                 <tr><td class="l_form">Client Name:</td>
-                <td>
-                <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[3]; ?>">
-				</td>
+                <td><input name="q_mo" class="q_in" type="text" value="<?php echo $c_row[3]; ?>"/></td>
                 </tr>
                 <tr><td class="l_form">Address:</td><td><textarea class="q_add" name="q_address"><?php echo $c_row[4]; ?></textarea></td></tr>
                 </table>

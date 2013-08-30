@@ -154,15 +154,13 @@ cursor: pointer;
 
 </style>
 </head>
-
 <body>
 <div id="container">
     <div id="sub-header">
-	
     <?php
 	include("header.php");
 	?>
-            <form action="" method="post">
+        <form action="" method="post">
        	<table class="emp_tab">
         <tr class="search_res">
         <td class="info">Site Assign To Details</td>
@@ -183,33 +181,52 @@ cursor: pointer;
 			echo "<table class='emp_tab'>";
 			echo "<tr class='menu_header'>";
         	echo "<td width='50'>In No.</td>";
-        	echo "<td colspan='5'>Emp Name</td>";
-        	echo "<td width='250'>Client Name</td>";
+        	echo "<td width='200'>Emp Assign</td>";
+        	echo "<td width='250'>Kind Attn I</td>";
+			echo "<td width='250'>Kind Attn II</td>";
+			echo "<td width='250'>Company Name</td>";
         	echo "<td width='180'>Action</td>";
         	echo "</tr>";
 
 			echo "<tr class='pagi'>";
+			
 			echo"<td>";
 			echo $row[8];
 			echo"</td>";
+			
 			echo"<td>";
+			echo "<select >";
+			echo "<option>";
 			echo $row[2];
-			echo"</td>";
-			echo"<td>";
+			echo "</option>";
+			echo "<option>";
 			echo $row[3];
-			echo"</td>";
-			echo"<td>";
+			echo "</option>";
+			echo "<option>";
 			echo $row[4];
-			echo"</td>";
-			echo"<td>";
+			echo "</option>";
+			echo "<option>";
 			echo $row[5];
-			echo"</td>";
-			echo"<td>";
+			echo "</option>";
+			echo "<option>";
 			echo $row[6];
+			echo "</option>";
+			echo "</select>";
 			echo"</td>";
-			echo"<td  width='250'>";
+			
+			echo"<td>";
 			echo $row[7];
 			echo"</td>";
+			
+			echo"<td>";
+			echo $row[9];
+			echo"</td>";
+			
+			echo"<td>";
+			echo $row[10];
+			echo"</td>";
+			
+			
 			echo "<td width='180' class='print'>";
 			echo "<a href='?id_d=$row[0]' onclick='return confirmSubmit()'>Delete</a>&nbsp;<a href='siteupdate.php?id_u=$row[0]'>Update</a>";
 			echo "</td>";

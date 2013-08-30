@@ -1,7 +1,6 @@
 <?php
 error_reporting(0);
 include("include/database.php");
-
 $p=$_REQUEST['id'];
 $qry="select * from invoice where i_id=".$p;
 $res=mysql_query($qry);
@@ -98,7 +97,6 @@ $term_res=mysql_query($term);
 }
 </style>
 </head>
-
 <body>
 <br>
 <br>
@@ -125,7 +123,33 @@ To
 </td>
 </tr>
 <tr>
-<td><textarea><?php echo $row[3]; ?></textarea></td>
+<td>
+<?php
+if($row['3']!= NULL)
+{ 
+echo "<textarea>$row[3]</textarea>";
+}
+else
+{
+}
+
+?>
+</td>
+</tr>
+
+<tr>
+<td>
+<?php
+if($row['9']!= NULL)
+{ 
+echo "<textarea>$row[9]</textarea>";
+}
+else
+{
+}
+
+?>
+</td>
 </tr>
 <tr>
 <td>
@@ -133,7 +157,14 @@ To
 </tr>
 <tr>
 <td>
-Mob No : <label><?php echo $row[6]; ?></label></td>
+<?php
+if($row['6']!= NULL)
+{ 
+echo "Mob. No:<textarea> $row[6]</textarea>";
+}
+
+?>
+</td>
 </tr>
 </table>
 </div>

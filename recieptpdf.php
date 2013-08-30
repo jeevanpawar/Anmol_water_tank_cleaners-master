@@ -1,26 +1,25 @@
 <?php
 error_reporting(0);
 include("include/database.php");
-
 $p=$_REQUEST['id'];
 $i=$_REQUEST['id2'];
+$d=$_REQUEST['d'];
+$qry_r="select * from reminder where i_id='$i' and r_date='$d'";
+$res_r=mysql_query($qry_r);
 
-$qry="select * from reciept where d_id=".$p;
-$res=mysql_query($qry);
-$row=mysql_fetch_array($res);
+$qry1="select * from reciept where r_id='$p'";
+$res1=mysql_query($qry1);
+$row1=mysql_fetch_array($res1);
 
-$qry_a="select * from invoice where i_id=".$i;
-$res_a=mysql_query($qry_a);
-$row_a=mysql_fetch_array($res_a);
+$qry2="select * from invoice where i_id='$i'";
+$res2=mysql_query($qry2);
+$row2=mysql_fetch_array($res2);
 
-$qry_detail="select * from sub_invoice where i_id=".$i;
-$res_detail=mysql_query($qry_detail);
-
-$qry_site="select * from site where i_id=".$i;
-$res_site=mysql_query($qry_site);
+$qry3="select * from site where i_id='$i'";
+$res3=mysql_query($qry3);
+$row3=mysql_fetch_array($res3);
 
 ?>
-
 <html>
 <head>
 
@@ -85,7 +84,7 @@ $res_site=mysql_query($qry_site);
 .da
 {
 
-	margin-left:590px;
+	margin-left:560px;
 }
 .add
 {
@@ -94,11 +93,9 @@ $res_site=mysql_query($qry_site);
 }
 </style>
 </head>
-
 <body>
 <br>
 <br>
-
 <div class="heading"><center>ANMOL WATER TANK CLEANERS</center></div>
 <div class="sub_heading"><center>Shop No 4, Vaibhavlakshmi Appt, Behind Prakash Petrol Pump</center></div>
 <div class="sub_heading"><center>Govind Nagar, Nashik-422009</center></div>
@@ -106,24 +103,23 @@ $res_site=mysql_query($qry_site);
 <br><br>
 <div class="quotation"><center>Tank Cleaning Service Report</center></div>
 <div class="to">
-
 <div class="da">
-Rec. No &nbsp;:&nbsp;<label><?php echo $row[0]; ?></label>
+Rec. No &nbsp;:&nbsp;<label><?php echo $p; ?></label>
 <br>
-
-Date&nbsp;:&nbsp;<label><?php echo date('d-m-Y', strtotime($row[5])); ?></label>
-
+Date&nbsp;:&nbsp;<label><?php echo date('d-m-Y', strtotime($row1[5])); ?></label>
 <br>
-Invoice Ref. No : <label><?php echo $row[1]; ?></label>
+Invoice Ref. No : <label><?php echo $i; ?></label>
 <br>
-Date&nbsp;:&nbsp;<label><?php echo $row_a[1]; ?></label>
+Date&nbsp;:&nbsp;<label><?php echo $row2[1]; ?></label>
 </div>
 <div class="tow">
 To
 <br>
-<textarea><?php echo $row[3]; ?></textarea>
+<textarea><?php echo $row1[3]; ?></textarea>
 <br>
-<div class="add"><?php echo $row[6]; ?></div>
+<textarea><?php echo $row1[4]; ?></textarea>
+<br>
+<div class="add"><?php echo $row1[6]; ?></div>
 <br>
 </div>
 </div>
@@ -134,24 +130,31 @@ To
 <td>Description</td>
 <td width="40">Capacity</td>
 <td width="40">Quantity</td>
-<td width="50">Service Done In a Year</td>
+<td width="40">AMC</td>
+<td width="70">Service Done </td>
 </tr>
 <?php
-while($row_d=mysql_fetch_array($res_detail))
+while($row_d=mysql_fetch_array($res_r))
 {
+	$qry_des="select * from sub_invoice where des='$row_d[3]' and i_id='$i'";
+	$res_des=mysql_query($qry_des);
+	$row_des=mysql_fetch_array($res_des);
 	
 	echo "<tr>";
-	echo "<td>";
-	echo $row_d[2];
-	echo "</td>";
 	echo "<td>";
 	echo $row_d[3];
 	echo "</td>";
 	echo "<td>";
-	echo $row_d[4];
+	echo $row_des[3];
 	echo "</td>";
 	echo "<td>";
-	echo $row_d[6];
+	echo $row_des[4];
+	echo "</td>";
+	echo "<td>";
+	echo $row_des[6];
+	echo "</td>";
+	echo "<td>";
+	echo $row_d['r_count'];
 	echo "</td>";
 	echo "</tr>";
 }
@@ -164,18 +167,18 @@ Work Done By:
 <?php
 $row_site=mysql_fetch_array($res_site);
 echo "<br>";
-echo $row_site[2];
+echo $row3[2];
 echo "<br>";
-echo $row_site[3];
+echo $row3[3];
 echo "<br>";
-echo $row_site[4];
+echo $row3[4];
 echo "<br>";
-echo $row_site[5];
+echo $row3[5];
 echo "<br>";
-echo $row_site[6];
+echo $row3[6];
 ?>
 </div>
-
+<br><br>
 <div>
 
 Signature Of Customer:____________________
@@ -187,6 +190,8 @@ For Anmol Water Tank Cleaners
 <br><br>
 </div>
 
+
+<br>
 
 
 

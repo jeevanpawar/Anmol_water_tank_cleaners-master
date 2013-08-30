@@ -170,13 +170,7 @@
 			$res=mysql_query($qry);
 			$row=mysql_fetch_array($res);
 		?>
-        <tr>
-        <td class="l_form">Client Name:</td>
-        <td>
-       	<input type="text" class="q_in" value="<?php echo $row[7]; ?>">
-        </td>
-        </tr>
-        <tr>
+        
         
         </table>
         <div class="addemp_b">

@@ -4,8 +4,8 @@ $per_page = 20;
 $sql = "select * from invoice";
 $rsd = mysql_query($sql);
 $count = mysql_num_rows($rsd);
-$pages = ceil($count/$per_page)
-
+$pages = ceil($count/$per_page);
+error_reporting(0);
 ?>
 <?php
 if(isset($_REQUEST['go']))
@@ -17,8 +17,6 @@ if(isset($_REQUEST['go']))
 }
 
 ?>
-
-
 <html>
 <head>
 <title>Anmol Water Tank Cleaners</title>
@@ -130,7 +128,98 @@ cursor: pointer;
 
 
 </head>
+<script type="text/javascript" src="/js/jquery.js"></script>
+<script>
+$(document).ready(function(){
 
+$('[rel=tooltip]').bind('mouseover', function(){
+	  
+		
+	
+ if ($(this).hasClass('ajax')) {
+	var ajax = $(this).attr('ajax');	
+			
+  $.get(ajax,
+  function(theMessage){
+$('<div class="tooltip">'  + theMessage + '</div>').appendTo('body').fadeIn('fast');});
+
+ 
+ }else{
+			
+	    var theMessage = $(this).attr('content');
+	    $('<div class="tooltip">' + theMessage + '</div>').appendTo('body').fadeIn('fast');
+		}
+		
+		$(this).bind('mousemove', function(e){
+			$('div.tooltip').css({
+				'top': e.pageY - ($('div.tooltip').height() / 2) - 5,
+				'left': e.pageX + 15
+			});
+		});
+	}).bind('mouseout', function(){
+		$('div.tooltip').fadeOut('fast', function(){
+			$(this).remove();
+		});
+	});
+						   });
+
+</script>
+
+<style>
+.tooltip{
+	position:absolute;
+	background-image:url(tip-bg.png);
+	background-color:#09C;
+	background-position:left center;
+	background-repeat:no-repeat;
+	color:#000;
+	padding:5px 18px 5px 18px;
+	font-size:12px;
+	font-family:Verdana, Geneva, sans-serif;
+		box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.3), 
+             0px 20px 15px 0px rgba(0, 0, 0, 0.6); 
+
+	}
+	
+.tooltip-image{
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+	margin-top:3px;}	
+	
+	
+	.tooltip span{font-weight:700;
+color:#ffea00;}
+
+
+
+
+	#imagcon{
+		overflow:hidden;
+		float:left;
+		height:100px;
+		width:100px;
+		margin-right:5px;
+	}
+	#imagcon img{
+		max-width:100px;
+	}
+	#wrapper{
+		margin:0 auto;
+		width:500px;
+		margin-top: 99px;
+	}
+	.tool td
+	{
+		height:30px;
+			
+	}
+	.link a
+	{
+		color:#030303;
+		text-transform:uppercase;
+	}
+</style>
 <body>
 <div id="container">
     <div id="sub-header">
@@ -142,7 +231,6 @@ cursor: pointer;
        	<table class="emp_tab">
         <tr class="search_res">
         <td class="info">Clients Payment Details</td>
-        
         <td width="305">
         <input class="result" name="result" type="text">
         <input class="go" name="go" type="submit" value="Search">
@@ -156,34 +244,54 @@ cursor: pointer;
         if(isset($_REQUEST['go']))
         {	
 		$c_row=mysql_fetch_array($res);
+		$qry_sub="select SUM(total) from sub_invoice where i_id='$c_row[0]'";
+		$res_sub=mysql_query($qry_sub);
+		$row_sub=mysql_fetch_array($res_sub);
+			
+		$qry_pa="select SUM(p_amt) from partial_payment where i_id='$c_row[0]'";
+		$res_pa=mysql_query($qry_pa);
+		$row_pa=mysql_fetch_array($res_pa);
+			
 		echo "<table class='emp_tab'>";
 		echo "<tr class='menu_header'>";
 		echo "<td width='70'>In No.</td>";
-       	echo "<td width='250'>Client Name</td>";
-		echo "<td width='150'>Contact No</td>";
-       	echo "<td>Site Address</td>";
-		echo "<td width='100'>Action</td>";
+		echo "<td width='100'>Date</td>";
+       	echo "<td width='250'>Contact Details</td>";
+		echo "<td>Site Address</td>";
+		echo "<td width='100' colspan='2'>Action</td>";
        	echo "</tr>";
 
         echo "<tr class='pagi'>";
         echo "<td>";
 		echo $c_row[0];
 		echo "</td>";
-		echo "<td width='250'>";
-		echo $c_row[3];
-		echo "</td>";
-        echo "<td width='160'>";
-		echo $c_row[6];
-		echo "</td>";
 		echo "<td>";
+		echo $c_row[1];
+		echo "</td>";
+		echo "<td class='print2'>";
+        echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$c_row[3].'</td></tr><tr><td id=con>Contact No:</td><td>'.$c_row[6].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$c_row[8].'</td></tr><tr><td id=con>Contact No:</td><td>'.$c_row[10].'</td></tr><tr><td id=con>Company Name:</td><td>'.$c_row[9].'</td></tr><tr><td id=con>Phone No:</td><td>'.$c_row[11].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        echo "</td>";
+       	echo "<td>";
 		echo $c_row[4];
 		echo "</td>";
-	    echo "<td width='100' class='print'>";
-		echo "<a href='addpayment.php?p_id=$c_row[0]&&c_id=$c_row[2]'>Pay</a>&nbsp;<a href='viewpayment.php?v_id=$c_row[0]'>View</a>";
+	    if($row_sub[0]==$row_pa[0])
+		{
+	    echo "<td class='print' width='50'>";
+		echo "<a href='addpayment.php?p_id=$c_row[0]&&c_id=$c_row[2]'>Paid</a>";
+		echo "</td>";
+		}
+		else
+		{
+		echo "<td class='insert' width='50'>";
+		echo "<a href='addpayment.php?p_id=$c_row[0]&&c_id=$c_row[2]'>Pay&nbsp;</a>";
+		echo "</td>";
+
+		}
+		echo "<td class='print' width='50'>";
+		echo "<a href='viewpayment.php?v_id=$c_row[0]'>View</a>";
 		echo "</td>";
 		echo "</tr>";
-
-        echo "<table>";
+		echo "<table>";
 		echo "<br>";
 		}
 		}
@@ -209,9 +317,7 @@ cursor: pointer;
                 
                 </div>
                 
-        
-    
-    	<div class="clear"></div>
+<div class="clear"></div>
     
 </div>
  <div id="footer">

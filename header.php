@@ -58,6 +58,9 @@
               	<li><a href="addterm.php">Add Terms</a></li>
             </ul>
            </li>
+           <li><a href="backup.php">Backup</a>
+            		
+            </li>
        
         </ul>
     </div>

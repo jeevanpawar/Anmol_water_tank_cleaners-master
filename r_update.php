@@ -14,7 +14,7 @@
 	if(isset($_REQUEST['e_up']))
 	{	
 		$up_r=$_REQUEST['id'];
-		$t1=$_POST['r_date'];
+		$t1=date('Y-m-d', strtotime($_POST['r_date']));
 		
 		$qry_up="update reminder SET r_date='".$t1."' where r_id=".$up_r;
 		$res_up=mysql_query($qry_up);
@@ -53,13 +53,10 @@
         <td class="l_form">Invoice No:</td>
         <td><input type="text" class="q_in" readonly name="eu_name" value="<?php echo $row_up[1]; ?>"></td>
         </tr>
-        <tr>
-        <td class="l_form">Client Name:</td>
-        <td><input type="text" class="q_in" name="eu_name" value="<?php echo $row_up[2]; ?>"></td>
-        </tr>
+        
         <tr>
         <td class="l_form">Date:</td>
-        <td><input type="text" class="q_in" name="r_date" value="<?php echo $row_up[4]; ?>"></td>
+        <td><input type="text" class="q_in" name="r_date" value="<?php echo date('d-m-Y', strtotime($row_up[4])); ?>"></td>
         </tr>
         
         </div>

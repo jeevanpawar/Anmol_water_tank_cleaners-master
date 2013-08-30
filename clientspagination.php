@@ -51,9 +51,13 @@ $page=$_GET['page'];
 ?>
         <table class="emp_tab">
         <tr class="menu_header">
-        <td width="250">Client Name</td>
-        <td width="160">Contact No.</td>
-        <td>Site Address</td>
+        <td width="250">Kind Attn I</td>
+        <td width="160">Kind Attn I No.</td>
+        <td width="250">Kind Attn II</td>
+        <td width="160">Kind Attn II No.</td>
+        <td width="250">Company Name</td>
+        <td width="250">Phone No</td>
+        
         <td width="100">Checklist</td>
         <td width="100">Action</td>
         </tr>
@@ -63,14 +67,23 @@ $page=$_GET['page'];
 		{
         echo "<tr class='pagi'>";
         echo "<td width='250'>";
-		echo $c_row[2]; echo "&nbsp;"; echo $c_row[3];
+		echo $c_row[2]; 
 		echo "</td>";
-        echo "<td width='160'>";
+		echo "<td width='160'>";
 		echo $c_row[8];
 		echo "</td>";
-		echo "<td>";
-		echo $c_row[4];
+		echo "<td width='250'>";
+		echo $c_row[3];
 		echo "</td>";
+		echo "<td width='160'>";
+		echo $c_row[12];
+		echo "</td>";
+		echo "<td width='160'>";
+		echo $c_row[11];
+		echo "</td>";
+		echo "<td width='160'>";
+		echo $c_row[7];
+		echo "</td>";		
 		echo "<td width='100' class='print'>";
 		echo "<a href='checklist.php?id_a=$c_row[0]'>Add</a>&nbsp;<a href='viewchecklist.php?id_v=$c_row[0]'>View</a>";
 		echo "</td>";

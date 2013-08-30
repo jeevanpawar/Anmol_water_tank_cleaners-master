@@ -5,7 +5,6 @@ $in=$_REQUEST['i_id'];
 $c_query="select * from invoice where i_id=".$in;
 $c_res=mysql_query($c_query);
 $c_row=mysql_fetch_array($c_res);
-
 ?>
 
 <?php
@@ -46,14 +45,22 @@ if(isset($_REQUEST['submit']))
 		$date = $day."-".$month."-".$year;
 		$c = $c + $a;
 		$NewDate[$j]=date('Y-m-d', strtotime("$date +$c days"));
+		$count[$j]=$j+1;
 	}
-	foreach($NewDate as $x)
+	foreach(array_combine($NewDate, $count) as $x => $co )
 	{
+		
 		$ia=$_REQUEST['i_id'];
 		$des=$q_d;
 		$name=$c_row[3];
-		$qry="insert into reminder(i_id,r_name,r_des,r_date) values('".$ia."','".$name."','".$des."','".$x."')";
+		$name2=$c_row[8];
+		$comp=$c_row[9];
+		$mo=$c_row[6];
+		$mo2=$c_row[10];
+		$ph=$c_row[11];
+		$qry="insert into reminder(i_id,r_name,r_des,r_date,r_name2,r_comp,r_mo,r_mo2,r_ph,r_count) values('".$ia."','".$name."','".$des."','".$x."','".$name2."','".$comp."','".$mo."','".$mo2."','".$ph."','".$co."')";
 		$res=mysql_query($qry);
+		
 	}
 	
 	
@@ -110,9 +117,19 @@ if(isset($_REQUEST['cancel']))
                 <br />
                 <table class="q_info3">
                 <tr><td class="l_form">Date:</td><td><input name="q_date" class="q_in" type="text" value="<?php  echo date("d-m-Y"); ?>"/></td></tr>
-                <tr><td class="l_form">Client Name:</td>
+                <tr><td class="l_form">Kind Attn I:</td>
                 <td>
                 <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[3]; ?>">
+				</td>
+                </tr>
+                <tr><td class="l_form">Kind Attn II:</td>
+                <td>
+                <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[8]; ?>">
+				</td>
+                </tr>
+                <tr><td class="l_form">Company Name:</td>
+                <td>
+                <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[9]; ?>">
 				</td>
                 </tr>
                 <tr><td class="l_form">Address:</td><td><textarea class="q_add" name="q_address"><?php echo $c_row[4]; ?></textarea></td></tr>
@@ -120,9 +137,24 @@ if(isset($_REQUEST['cancel']))
                 <table class="q_info4">
                 <tr><td class="l_form">Invoice No</td>
                 <td><input name="q_mo" class="q_in" type="text" readonly value="<?php echo $c_row[0]; ?>"/></td></tr>
+                <tr><td class="l_form">Contact No:</td>
+                <td>
+                <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[6]; ?>">
+				</td>
+                </tr>
+                <tr><td class="l_form">Contact No:</td>
+                <td>
+                <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[10]; ?>">
+				</td>
+                </tr>
+                <tr><td class="l_form">Phone No:</td>
+                <td>
+                <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[11]; ?>">
+				</td>
+                </tr>
                 <tr><td class="l_form">P.O/W.O No</td>
                 <td><input name="q_mo" class="q_in" type="text" value="<?php echo $c_row[7]; ?>"/></td></tr>
-                <tr><td class="l_form">Mo No:</td><td><input name="q_mo" class="q_in" type="text" value="<?php echo $c_row[6]; ?>"/></td>
+                <tr><td class="l_form"></td><td></td></tr>
                 </table>
                 <br />
                 <table class="des">
@@ -150,7 +182,6 @@ if(isset($_REQUEST['cancel']))
                 <td>
                  <input class="des_q" type="text" name="s[]" id="0"><br>
                 </td>
-                
                 </tr>
                 
                 </table>

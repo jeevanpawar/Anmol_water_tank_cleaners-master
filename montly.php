@@ -6,6 +6,97 @@
 
 <link rel="stylesheet" href="css/myStyle.css" type="text/css">
 <script type="text/javascript" src="js/jquery.js"></script>
+<script>
+$(document).ready(function(){
+
+$('[rel=tooltip]').bind('mouseover', function(){
+	  
+		
+	
+ if ($(this).hasClass('ajax')) {
+	var ajax = $(this).attr('ajax');	
+			
+  $.get(ajax,
+  function(theMessage){
+$('<div class="tooltip">'  + theMessage + '</div>').appendTo('body').fadeIn('fast');});
+
+ 
+ }else{
+			
+	    var theMessage = $(this).attr('content');
+	    $('<div class="tooltip">' + theMessage + '</div>').appendTo('body').fadeIn('fast');
+		}
+		
+		$(this).bind('mousemove', function(e){
+			$('div.tooltip').css({
+				'top': e.pageY - ($('div.tooltip').height() / 2) - 5,
+				'left': e.pageX + 15
+			});
+		});
+	}).bind('mouseout', function(){
+		$('div.tooltip').fadeOut('fast', function(){
+			$(this).remove();
+		});
+	});
+						   });
+
+</script>
+
+<style>
+.tooltip{
+	position:absolute;
+	background-image:url(tip-bg.png);
+	background-color:#09C;
+	background-position:left center;
+	background-repeat:no-repeat;
+	color:#000;
+	padding:5px 18px 5px 18px;
+	font-size:12px;
+	font-family:Verdana, Geneva, sans-serif;
+		box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 0.3), 
+             0px 20px 15px 0px rgba(0, 0, 0, 0.6); 
+
+	}
+	
+.tooltip-image{
+	float:left;
+	margin-right:5px;
+	margin-bottom:5px;
+	margin-top:3px;}	
+	
+	
+	.tooltip span{font-weight:700;
+color:#ffea00;}
+
+
+
+
+	#imagcon{
+		overflow:hidden;
+		float:left;
+		height:100px;
+		width:100px;
+		margin-right:5px;
+	}
+	#imagcon img{
+		max-width:100px;
+	}
+	#wrapper{
+		margin:0 auto;
+		width:500px;
+		margin-top: 99px;
+	}
+	.tool td
+	{
+		height:30px;
+			
+	}
+	.link a
+	{
+		color:#030303;
+		text-transform:uppercase;
+	}
+</style>
 <script type="text/javascript">
 $(function(){
 
@@ -227,7 +318,7 @@ $('.info8').fadeIn(200);
     <div class="page">
 			<div class="menu">
 			<table class="menuTable">
-            <tr>
+            <tr class="menu_header">
             <td id="link">Jan</td>
             <td id="link2">Feb</td>
             <td id="link3">March</td>
@@ -247,7 +338,7 @@ $('.info8').fadeIn(200);
 		    <table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -278,9 +369,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_f[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_f[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_f[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_f[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_f[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_f[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_f[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_f[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_f[3];
 				echo "</td>";
@@ -300,7 +391,7 @@ $('.info8').fadeIn(200);
             <table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -332,9 +423,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_ma[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_ma[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_ma[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_ma[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_ma[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_ma[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_ma[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_ma[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_ma[3];
 				echo "</td>";
@@ -356,7 +447,7 @@ $('.info8').fadeIn(200);
             <table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -388,9 +479,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_ap[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_ap[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_ap[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_ap[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_ap[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_ap[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_ap[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_ap[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_ap[3];
 				echo "</td>";
@@ -414,7 +505,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -446,9 +537,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_j[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_j[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_j[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_j[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_j[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_j[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_j[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_j[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_j[3];
 				echo "</td>";
@@ -471,7 +562,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -503,9 +594,10 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_m[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_m[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_m[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_m[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_m[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_m[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_m[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_m[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
+
 				echo "<td>";
 				echo $row_m[3];
 				echo "</td>";
@@ -528,7 +620,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -560,9 +652,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_ju[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_ju[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_ju[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_ju[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_ju[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_ju[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_ju[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_ju[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_ju[3];
 				echo "</td>";
@@ -585,7 +677,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -617,9 +709,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_jl[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_jl[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_j1[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_j1[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_j1[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_j1[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_j1[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_j1[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_jl[3];
 				echo "</td>";
@@ -642,7 +734,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -674,9 +766,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_au[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_au[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_au[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_au[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_au[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_au[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_au[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_au[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_au[3];
 				echo "</td>";
@@ -699,7 +791,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -731,9 +823,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_se[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_se[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_se[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_se[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_se[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_se[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_se[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_se[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_se[3];
 				echo "</td>";
@@ -756,7 +848,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -788,9 +880,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_o[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_o[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_o[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_o[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_o[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_o[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_o[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_o[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_o[3];
 				echo "</td>";
@@ -813,7 +905,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -845,9 +937,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_n[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_n[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_n[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_n[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_n[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_n[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_n[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_n[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_n[3];
 				echo "</td>";
@@ -870,7 +962,7 @@ $('.info8').fadeIn(200);
 			<table class="emp_month">
         	<tr class="menu_header">
         	<td width="70">In.No.</td>
-        	<td width="350">Client Name</td>
+        	<td width="350">Contact Details</td>
         	<td>Description</td>
         	<td width="150">Actual Date</td>
         	<td width="80">Update</td>
@@ -902,9 +994,9 @@ $('.info8').fadeIn(200);
 				echo "<td>";
 				echo $row_d[1];
 				echo "</td>";
-				echo "<td>";
-				echo $row_d[2];
-				echo "</td>";
+				echo "<td class='print2'>";
+        		echo '<a href=# alt=Image Tooltip rel=tooltip content="<table class=tool><tr><td id=con>Kind Attn I:</td><td>'.$row_d[2].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_d[8].'</td></tr><tr><td id=con>Kind Attn II:</td><td>'.$row_d[6].'</td></tr><tr><td id=con>Contact No:</td><td>'.$row_d[9].'</td></tr><tr><td id=con>Company Name:</td><td>'.$row_d[7].'</td></tr><tr><td id=con>Phone No:</td><td>'.$row_d[10].'</td></tr></table>">'.ContactDetails.'</a>'.'<br>';
+        		echo "</td>";
 				echo "<td>";
 				echo $row_d[3];
 				echo "</td>";

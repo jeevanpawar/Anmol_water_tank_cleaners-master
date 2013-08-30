@@ -8,6 +8,10 @@
 	
 	if(isset($_REQUEST['s_add']))
 	{	
+		$o='1';
+		$qry_up="update invoice SET assign='$o' where i_id='$id'";
+		$res_up=mysql_query($qry_up);
+		
 		$s_to=$_POST['s'];
 		$s_t1=$_POST['e1'];
 		$s_t2=$_POST['e2'];
@@ -16,11 +20,13 @@
 		$s_t5=$_POST['e5'];
 		$s_t6=$_POST['a_name'];
 		$s_t7=$_POST['i_id'];
-		$s_qry="insert into site(s_date,e1,e2,e3,e4,e5,s_add,i_id) values('".$s_to."','".$s_t1."','".$s_t2."','".$s_t3."','".$s_t4."','".$s_t5."','".$s_t6."','".$s_t7."')";
+		$s_t8=$_POST['a_name2'];
+		$s_t9=$_POST['c_name'];
+		$s_qry="insert into site(s_date,e1,e2,e3,e4,e5,s_add,i_id,s_add2,c_name) values('".$s_to."','".$s_t1."','".$s_t2."','".$s_t3."','".$s_t4."','".$s_t5."','".$s_t6."','".$s_t7."','".$s_t8."','".$s_t9."')";
 		$s_res=mysql_query($s_qry);
 		if($s_res)
 		{
-			header("location:assignto.php");
+			header("location:site.php");
 		}
 		else
 		{
@@ -66,8 +72,18 @@
         </tr>
         
         <tr>
-        <td class="l_form">Client Name:</td>
+        <td class="l_form">Kind Attn I:</td>
         <td><input type="text" class="q_in" name="a_name" value="<?php  echo $row[3]; ?>"></td>
+        </tr>
+        
+        <tr>
+        <td class="l_form">Kind Attn II:</td>
+        <td><input type="text" class="q_in" name="a_name2" value="<?php  echo $row[8]; ?>"></td>
+        </tr>
+        
+        <tr>
+        <td class="l_form">Company Name:</td>
+        <td><input type="text" class="q_in" name="c_name" value="<?php  echo $row[9]; ?>"></td>
         </tr>
         
         <tr>

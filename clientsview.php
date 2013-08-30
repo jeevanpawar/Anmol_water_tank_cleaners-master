@@ -31,21 +31,22 @@
         <div>
         <form action="" method="post">
         <table class="tab_1">
-                <tr><td class="l_form">First Name:</td><td><label><?php echo $c_row[2]; ?></label></td></tr>
-                <tr><td class="l_form">Last Name:</td><td><label><?php echo $c_row[3]; ?></label></td></tr>
-                <tr><td class="l_form" valign="top">Address:</td><td><label><?php echo $c_row[4]; ?></label></td></tr>
-                <tr><td class="l_form">City:</td><td><label><?php echo $c_row[5]; ?></label></td></tr>
-                <tr><td class="l_form">Pin Code:</td><td><label><?php echo $c_row[6]; ?></label></td></tr>
-                <tr><td class="l_form">Company Name:</td><td><label><?php echo $c_row[11]; ?></label></td></tr>
+                <tr><td class="l_form">Kind Attn I:</td><td><input type="text" class="q_in" value="<?php echo $c_row[2]; ?>" readonly></td></tr>
+                <tr><td class="l_form">Kind Attn II:</td><td><input type="text" class="q_in" value="<?php echo $c_row[3]; ?>" readonly></td></tr>
+                <tr><td class="l_form">Address:</td><td><textarea class="q_add" readonly><?php echo $c_row[4]; ?></textarea></td></tr>
+                <tr><td class="l_form">City:</td><td><input type="text" class="q_in" readonly value="<?php echo $c_row[5]; ?>"></td></tr>
+                <tr><td class="l_form">Pin Code:</td><td><input type="text" class="q_in" readonly value="<?php echo $c_row[6]; ?>"></td></tr>
+                <tr><td class="l_form">Company Name:</td><td><input type="text" class="q_in" readonly value="<?php echo $c_row[11]; ?>"></td></tr>
                 </table>
                 <table class="tab_2">
-                <tr><td class="l_form">Email Id:</td><td><label><?php echo $c_row[9]; ?></label></td></tr>
-                <tr><td class="l_form">Phone No:</td><td><label><?php echo $c_row[7]; ?></label></td></tr>
-                <tr><td class="l_form">Mobile No:</td><td><label><?php echo $c_row[8]; ?></label></td></tr>
-                <tr><td class="l_form">Date:</td><td><label><?php  echo date("d-m-Y"); ?></label></td></tr>
+                <tr><td class="l_form">Mobile No:</td><td><input type="text" class="q_in" readonly value="<?php echo $c_row[8]; ?>"></td></tr>
+                <tr><td class="l_form">Mobile No:</td><td><input type="text" class="q_in" readonly value="<?php echo $c_row[12]; ?>"></td></tr>
+                <tr><td class="l_form">Email Id:</td><td><input type="text" class="q_in" readonly value="<?php echo $c_row[9]; ?>"></td></tr>
+                <tr><td class="l_form">Phone No:</td><td><input type="text" class="q_in" readonly value="<?php echo $c_row[7]; ?>"></td></tr>
+                <tr><td class="l_form">Date:</td><td><input type="text" class="q_in" readonly value="<?php  echo $c_row[1]; ?>"></td></tr>
                 <tr>
                 <td class="l_form">Site Type:</td>
-                <td><label><?php echo $c_row[10]; ?></label></td>
+                <td><input type="text" class="q_in" readonly value="<?php echo $c_row[10]; ?>"></td>
                 </tr>
                 
                 

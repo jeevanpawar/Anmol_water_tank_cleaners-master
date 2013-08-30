@@ -27,7 +27,12 @@ if(isset($_REQUEST['submit']))
 	$u3=$_POST['q_address'];
 	$u5=$_POST['q_mo'];
 	$u6=$_POST['q_po'];
-	$qry_up="update invoice SET q_date='".$u1."', q_name='".$u2."', q_address='".$u3."', q_mo='".$u5."', po_wo='".$u6."' where i_id=".$in;
+	$u7=$_POST['q_name1'];
+	$u8=$_POST['c_name'];
+	$u9=$_POST['q_mo1'];
+	$u10=$_POST['q_ph'];
+	
+	$qry_up="update invoice SET q_date='".$u1."', q_name='".$u2."', q_address='".$u3."', q_mo='".$u5."', po_wo='".$u6."', q_name1='".$u7."', c_name='".$u8."', q_mo1='".$u9."', ph='".$u10."' where i_id=".$in;
 	$res_up=mysql_query($qry_up);
 	
 	$a=$_POST['d'];
@@ -64,13 +69,19 @@ if(isset($_REQUEST['submit']))
 		$date = $day."-".$month."-".$year;
 		$c = $c + $a;
 		$NewDate[$j]=date('Y-m-d', strtotime("$date +$c days"));
+		$count[$j]=$j+1;
 	}
-	foreach($NewDate as $x)
+	foreach(array_combine($NewDate, $count) as $x => $co)
 	{
 		$ia=$_REQUEST['id1'];
 		$des=$q_d;
 		$name=$c_row[3];
-		$qry="insert into reminder(i_id,r_name,r_des,r_date) values('".$ia."','".$name."','".$des."','".$x."')";
+		$name2=$c_row[8];
+		$comp=$c_row[9];
+		$mo=$c_row[6];
+		$mo2=$c_row[10];
+		$ph=$c_row[11];
+		$qry="insert into reminder(i_id,r_name,r_des,r_date,r_name2,r_comp,r_mo,r_mo2,r_ph,r_count) values('".$ia."','".$name."','".$des."','".$x."','".$name2."','".$comp."','".$mo."','".$mo2."','".$ph."','".$co."')";
 		$res=mysql_query($qry);
 	}
 	
@@ -128,9 +139,19 @@ if(isset($_REQUEST['cancel']))
                 <br />
                 <table class="q_info3">
                 <tr><td class="l_form">Date:</td><td><input name="q_date" class="q_in" type="text" value="<?php  echo $c_row[1]; ?>"/></td></tr>
-                <tr><td class="l_form">Client Name:</td>
+                <tr><td class="l_form">Kind Attn I:</td>
                 <td>
                 <input type="text" class="q_in" name="q_name" value="<?php echo $c_row[3]; ?>">
+				</td>
+                </tr>
+                <tr><td class="l_form">Kind Attn II:</td>
+                <td>
+                <input type="text" class="q_in" name="q_name1" value="<?php echo $c_row[8]; ?>">
+				</td>
+                </tr>
+                <tr><td class="l_form">Company Name:</td>
+                <td>
+                <input type="text" class="q_in" name="c_name" value="<?php echo $c_row[9]; ?>">
 				</td>
                 </tr>
                 <tr><td class="l_form">Address:</td><td><textarea class="q_add" name="q_address"><?php echo $c_row[4]; ?></textarea></td></tr>
@@ -138,9 +159,11 @@ if(isset($_REQUEST['cancel']))
                 <table class="q_info4">
                 <tr><td class="l_form">Invoice No</td>
                 <td><input class="q_in" readonly type="text" value="<?php echo $c_row[0]; ?>"/></td></tr>
+                <tr><td class="l_form">Mo No:</td><td><input name="q_mo" class="q_in" type="text" value="<?php echo $c_row[6]; ?>"/></td></tr>
+				<tr><td class="l_form">Mo No:</td><td><input name="q_mo1" class="q_in" type="text" value="<?php echo $c_row[10]; ?>"/></td></tr>
+                <tr><td class="l_form">Ph No:</td><td><input name="q_ph" class="q_in" type="text" value="<?php echo $c_row[11]; ?>"/></td></tr>
                 <tr><td class="l_form">P.O/W.O No</td>
                 <td><input name="q_po" class="q_in" type="text" value="<?php echo $c_row[7]; ?>"/></td></tr>
-                <tr><td class="l_form">Mo No:</td><td><input name="q_mo" class="q_in" type="text" value="<?php echo $c_row[6]; ?>"/></td>
                 </table>
                 <br />
                 <table class="des">

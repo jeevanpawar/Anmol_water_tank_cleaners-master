@@ -58,7 +58,7 @@
         <td><input type="text" class="q_in" name="eu_name" value="<?php echo $row_up[1]; ?>"></td>
         </tr>
         <tr>
-        <td valign="top" class="l_form">Address:</td>
+        <td class="l_form">Address:</td>
         <td><textarea class="q_add" name="eu_address" ><?php echo $row_up[2]; ?></textarea></td>
         </tr>
         <tr>
